@@ -116,7 +116,7 @@ const WelcomePage = () => {
               className="w-[48px] h-[48px]"
             />
           </Pressable>
-          <Pressable>
+          <Pressable onPress={() => router.push("filter")}>
             <Image
               source={require("../assets/icons/home/love.png")}
               className="w-[48px] h-[48px]"

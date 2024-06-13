@@ -14,10 +14,8 @@ export default function Header() {
             height={40}
           />
           <Image
-            className="flex-grow"
+            className="flex-grow max-w-[148px] max-h-[28px]"
             source={require("../../assets/brand/logo.png")}
-            width={375}
-            height={28}
             resizeMode="contain"
           />
           <Image

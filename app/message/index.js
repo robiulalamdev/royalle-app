@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
 import SingleChat from "../../components/message/chats/SingleChat";
 import { chats } from "../../constants/data";
+import BottomTab from "../../components/shared/BottomTab";
 
 export default function MessageScreen() {
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
@@ -54,6 +55,12 @@ export default function MessageScreen() {
           <SingleChat data={item} handleChat={handleChat} />
         ))}
       </ScrollView>
+      <View
+        className="fixed bottom-0 w-full right-0 left-0 bg-opacity-0"
+        style={{ backgroundColor: "transparent" }}
+      >
+        <BottomTab currentTab="Message" />
+      </View>
     </SafeAreaView>
   );
 }

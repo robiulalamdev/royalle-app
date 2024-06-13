@@ -16,10 +16,17 @@ export default function BottomTab({ currentTab = "Home" }) {
             currentTab === "Home" ? "bg-[#52C3BE1C]" : "bg-[#FFFFFF0A]"
           }`}
         >
-          <Image
-            source={require("../../assets/icons/home/tabs/home.png")}
-            className="w-[25px] h-[25px]"
-          />
+          {currentTab === "Home" ? (
+            <Image
+              source={require("../../assets/icons/home/tabs/homeFilled.png")}
+              className="w-[25px] h-[25px]"
+            />
+          ) : (
+            <Image
+              source={require("../../assets/icons/home/tabs/home.png")}
+              className="w-[25px] h-[25px]"
+            />
+          )}
         </Pressable>
         <Pressable
           onPress={() => router.push("message")}
@@ -27,13 +34,20 @@ export default function BottomTab({ currentTab = "Home" }) {
             currentTab === "Message" ? "bg-[#52C3BE1C]" : "bg-[#FFFFFF0A]"
           }`}
         >
-          <Image
-            source={require("../../assets/icons/home/tabs/message.png")}
-            className="w-[25px] h-[25px]"
-          />
+          {currentTab === "Message" ? (
+            <Image
+              source={require("../../assets/icons/home/tabs/messageFilled.png")}
+              className="w-[25px] h-[25px]"
+            />
+          ) : (
+            <Image
+              source={require("../../assets/icons/home/tabs/message.png")}
+              className="w-[25px] h-[25px]"
+            />
+          )}
         </Pressable>
         <Pressable
-          onPress={() => router.push("/bot")}
+          onPress={() => router.push("bot")}
           className={`w-[50px] h-[50px] flex-row justify-center items-center rounded-full ${
             currentTab === "Bot" ? "bg-[#52C3BE1C]" : "bg-[#FFFFFF0A]"
           }`}

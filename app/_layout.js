@@ -30,6 +30,12 @@ const Layout = () => {
         }}
       />
       <Stack.Screen
+        name="bot/index"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="filter/index"
         options={{
           headerShown: false,

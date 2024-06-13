@@ -89,3 +89,33 @@ export const inboxMessages = [
       "oh splendid! let me search the best place and i’ll let you know ASAP",
   },
 ];
+
+export const botConversations = [
+  { id: 1, message: "Hi! How can i help you?", isBot: true },
+];
+
+export const botAssistantQuestions = [
+  {
+    question: "Refine matches",
+    response:
+      "Sure, let's refine your matches. What criteria would you like to adjust?",
+    icon: require("../assets/icons/bot/assistant/icon1.png"),
+  },
+  {
+    question: "Update settings",
+    response: "No problem! What settings would you like to update?",
+    icon: require("../assets/icons/bot/assistant/icon2.png"),
+  },
+  {
+    question: "Schedule response time",
+    response:
+      "When would you like to schedule a response time? Please provide the date and time.",
+    icon: require("../assets/icons/bot/assistant/icon3.png"),
+  },
+  {
+    question: "Setup reminder",
+    response:
+      "Got it! What reminder would you like to set up and when should I remind you?",
+    icon: require("../assets/icons/bot/assistant/icon4.png"),
+  },
+];
