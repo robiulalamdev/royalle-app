@@ -119,3 +119,50 @@ export const botAssistantQuestions = [
     icon: require("../assets/icons/bot/assistant/icon4.png"),
   },
 ];
+
+export const homeItems = [
+  {
+    id: 1,
+    image: require("../assets/images/home/items/img1.png"),
+    name: "Jennifer Anderson",
+    country: "New York",
+    age: 24,
+    about:
+      "An accomplished technology entrepreneur, innovator, and thought leader",
+  },
+  {
+    id: 2,
+    image: require("../assets/images/home/items/img2.jpg"),
+    name: "Michael Smith",
+    country: "California",
+    age: 30,
+    about: "A creative graphic designer with a passion for visual storytelling",
+  },
+  {
+    id: 3,
+    image: require("../assets/images/home/items/img3.jpg"),
+    name: "Sarah Johnson",
+    country: "Texas",
+    age: 28,
+    about:
+      "A skilled software developer with a focus on mobile application development",
+  },
+  {
+    id: 4,
+    image: require("../assets/images/home/items/img4.jpg"),
+    name: "David Brown",
+    country: "Florida",
+    age: 35,
+    about:
+      "An experienced project manager with expertise in agile methodologies",
+  },
+  {
+    id: 5,
+    image: require("../assets/images/home/items/img5.jpg"),
+    name: "Kristina Jackson",
+    country: "Washington",
+    age: 27,
+    about:
+      "A marketing specialist with a knack for creating compelling content",
+  },
+];

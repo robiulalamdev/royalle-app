@@ -41,7 +41,7 @@ export default function SingleChat({ data = null, handleChat }) {
               className="font-poppins text-[14px] font-medium leading-[20px] text-white max-w-[220px]"
               style={{ fontFamily: "PoppinsRegular" }}
             >
-              {data?.user?.name} sdfdsfdsf s sfdf sdfdf sdfsfdf sdfd d
+              {data?.user?.name}
             </Text>
             <Text
               className="font-poppins text-[10px] font-normal leading-[24px] text-[#FFFFFF99] text-right "

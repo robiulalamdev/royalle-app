@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "wallpapers",
-    "slug": "wallpapers",
+    "name": "demo",
+    "slug": "demo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,14 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nahid.demo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.robiulalamdx.wallpapers"
+      "package": "com.nahid.demo"
     },
     "web": {
       "bundler": "metro",
@@ -42,8 +43,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "d230aab5-51b9-4289-8d53-841706a44051"
+        "projectId": "e6cfa054-07bf-4f3b-9712-59f07eb2e994"
       }
-    }
+    },
+    "owner": "robiulalamdx"
   }
 }
