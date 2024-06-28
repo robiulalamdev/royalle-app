@@ -39,7 +39,7 @@ export default function LocationInput({
             ({locationType})
           </Text>
         </Text>
-        {locationType === "km" ? (
+        {locationType === "Mile" ? (
           <Pressable onPress={() => setLocationType("ml")}>
             <Image
               source={require("../../assets/icons/filter/locationMl.png")}
@@ -47,7 +47,7 @@ export default function LocationInput({
             />
           </Pressable>
         ) : (
-          <Pressable onPress={() => setLocationType("km")}>
+          <Pressable onPress={() => setLocationType("Mile")}>
             <Image
               source={require("../../assets/icons/filter/locationSearch.png")}
               className="w-[24px] h-[24px]"
@@ -55,7 +55,7 @@ export default function LocationInput({
           </Pressable>
         )}
       </View>
-      {locationType === "km" ? (
+      {locationType === "Mile" ? (
         <View className="mt-[12px]">
           <TextInput
             onChangeText={setLocationValue}

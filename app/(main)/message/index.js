@@ -10,9 +10,9 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
-import SingleChat from "../../components/message/chats/SingleChat";
-import { chats } from "../../constants/data";
-import BottomTab from "../../components/shared/BottomTab";
+import SingleChat from "../../../components/message/chats/SingleChat";
+import { chats } from "../../../constants/data";
+import BottomTab from "../../../components/shared/BottomTab";
 
 export default function MessageScreen() {
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
@@ -30,7 +30,7 @@ export default function MessageScreen() {
       <View className="min-h-[72px] w-full flex-row justify-between items-center">
         <View className="flex-row items-center gap-x-[12px]">
           <Image
-            source={require("../../assets/images/message/msgHeader.png")}
+            source={require("../../../assets/images/message/msgHeader.png")}
             className="w-[40px] h-[40px]"
           />
           <Text className="font-medium text-[20px] leading-[28px] text-white font-poppins">
@@ -38,7 +38,7 @@ export default function MessageScreen() {
           </Text>
         </View>
         <Image
-          source={require("../../assets/images/message/chat/profile1.png")}
+          source={require("../../../assets/images/message/chat/profile1.png")}
           className="w-[40px] h-[40px]"
         />
       </View>

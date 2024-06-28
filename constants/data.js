@@ -153,3 +153,46 @@ export const homeItems = [
       "A marketing specialist with a knack for creating compelling content",
   },
 ];
+
+export const initialItems = [
+  {
+    id: 1,
+    logo: require("../assets/images/initial/bumble.png"),
+    image: require("../assets/images/home/items/img1.png"),
+    name: "Jennifer Anderson",
+    country: "New York",
+    age: 24,
+    about:
+      "An accomplished technology entrepreneur, innovator, and thought leader",
+  },
+  {
+    id: 2,
+    logo: require("../assets/images/initial/tinder.png"),
+    image: require("../assets/images/home/items/img2.jpg"),
+    name: "Remy Singh",
+    country: "California",
+    age: 30,
+    about: "A creative graphic designer with a passion for visual storytelling",
+  },
+
+  {
+    id: 3,
+    logo: require("../assets/images/initial/hinge.png"),
+    image: require("../assets/images/home/items/img3.jpg"),
+    name: "Jhon wilson",
+    country: "Texas",
+    age: 28,
+    about:
+      "A skilled software developer with a focus on mobile application development",
+  },
+  {
+    id: 4,
+    logo: require("../assets/images/initial/bodoo.png"),
+    image: require("../assets/images/home/items/img4.jpg"),
+    name: "David Brown",
+    country: "Florida",
+    age: 35,
+    about:
+      "An experienced project manager with expertise in agile methodologies",
+  },
+];

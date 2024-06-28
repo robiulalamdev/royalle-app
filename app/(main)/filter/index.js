@@ -10,15 +10,15 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import AgeRange from "../../components/filter/AgeRange";
-import HeightRange from "../../components/filter/HeightRange";
-import GenderInput from "../../components/filter/GenderInput";
-import LocationInput from "../../components/filter/LocationInput";
-import Microfilters from "../../components/filter/Microfilters";
+import AgeRange from "../../../components/filter/AgeRange";
+import HeightRange from "../../../components/filter/HeightRange";
+import GenderInput from "../../../components/filter/GenderInput";
+import LocationInput from "../../../components/filter/LocationInput";
+import Microfilters from "../../../components/filter/Microfilters";
 
 export default function FilterScreen() {
   const [gender, setGender] = useState("Male");
-  const [locationType, setLocationType] = useState("km");
+  const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");
   const router = useRouter();
 
@@ -29,7 +29,7 @@ export default function FilterScreen() {
         <View className="flex-row items-center gap-x-[12px]">
           <Pressable onPress={() => router.back()}>
             <Image
-              source={require("../../assets/icons/filter/backArrow.png")}
+              source={require("../../../assets/icons/filter/backArrow.png")}
               className="w-[40px] h-[40px]"
             />
           </Pressable>
@@ -38,7 +38,7 @@ export default function FilterScreen() {
           </Text>
         </View>
         <Image
-          source={require("../../assets/images/global/profile.png")}
+          source={require("../../../assets/images/global/profile.png")}
           className="w-[40px] h-[40px] rounded-full object-cover"
           resizeMode="cover"
         />

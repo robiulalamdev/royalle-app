@@ -1,12 +1,12 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
-import { getMessagesByChatId } from "../../helpers/common";
-import { inboxMessages } from "../../constants/data";
+import { getMessagesByChatId } from "../../../helpers/common";
+import { inboxMessages } from "../../../constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
-import InboxHeader from "../../components/message/inbox/InboxHeader";
-import SendMessageBox from "../../components/message/inbox/SendMessageBox";
-import SingleMessage from "../../components/message/inbox/SingleMessage";
+import InboxHeader from "../../../components/message/inbox/InboxHeader";
+import SendMessageBox from "../../../components/message/inbox/SendMessageBox";
+import SingleMessage from "../../../components/message/inbox/SingleMessage";
 
 export default function InboxScreen() {
   const { chatId } = useLocalSearchParams();

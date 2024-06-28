@@ -10,10 +10,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
-import SingleBotMessage from "../../components/bot/SingleBotMessage";
-import SendBotMessage from "../../components/bot/SendBotMessage";
-import { botConversations } from "../../constants/data";
-import BotInitialQuestions from "../../components/bot/BotInitialQuestions";
+import SingleBotMessage from "../../../components/bot/SingleBotMessage";
+import SendBotMessage from "../../../components/bot/SendBotMessage";
+import { botConversations } from "../../../constants/data";
+import BotInitialQuestions from "../../../components/bot/BotInitialQuestions";
 
 export default function BotScreen() {
   const router = useRouter();
@@ -56,13 +56,13 @@ export default function BotScreen() {
         <View className="flex-row items-center gap-x-[12px]">
           <Pressable onPress={() => router.back()}>
             <Image
-              source={require("../../assets/icons/bot/LeftArrow.png")}
+              source={require("../../../assets/icons/bot/LeftArrow.png")}
               className="w-[40px] h-[40px]"
             />
           </Pressable>
           <View className="flex-row items-center gap-x-[8px]">
             <Image
-              source={require("../../assets/icons/bot/bot.png")}
+              source={require("../../../assets/icons/bot/bot.png")}
               className="w-[40px] h-[40px]"
             />
             <Text className="text-white text-[20px] font-medium leading-[28px]">
@@ -71,7 +71,7 @@ export default function BotScreen() {
           </View>
         </View>
         <Image
-          source={require("../../assets/icons/bot/DotsThreeVertical.png")}
+          source={require("../../../assets/icons/bot/DotsThreeVertical.png")}
           className="w-[32px] h-[32px]"
         />
       </View>
