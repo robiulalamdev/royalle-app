@@ -4,10 +4,12 @@ import Carousel from "react-native-snap-carousel";
 import { homeItems } from "../../constants/data";
 import { wp } from "../../helpers/common";
 import CarouselSingleItem from "./CarouselSingleItem";
+import { useRouter } from "expo-router";
 
 export default function HomeCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
+  const router = useRouter();
 
   const handleNextItem = () => {
     const newIndex = (activeIndex + 1) % homeItems.length;

@@ -49,10 +49,7 @@ export default function MessageScreen() {
         className=""
       >
         {chats.map((item, index) => (
-          <SingleChat data={item} handleChat={handleChat} />
-        ))}
-        {chats.map((item, index) => (
-          <SingleChat data={item} handleChat={handleChat} />
+          <SingleChat key={index} data={item} handleChat={handleChat} />
         ))}
       </ScrollView>
       <View

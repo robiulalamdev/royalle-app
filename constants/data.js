@@ -2,8 +2,9 @@ export const chats = [
   {
     id: 1,
     user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile1.png"),
+      name: "Jennifer Anderson",
+      // image: require("../assets/images/message/chat/profile1.png"),
+      image: require("../assets/images/home/items/img1.png"),
     },
     lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
     unseen: 2,
@@ -11,8 +12,9 @@ export const chats = [
   {
     id: 2,
     user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile2.png"),
+      name: "Remy Singh",
+      // image: require("../assets/images/message/chat/profile2.png"),
+      image: require("../assets/images/home/items/img2.jpg"),
     },
     lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
     unseen: 0,
@@ -20,8 +22,9 @@ export const chats = [
   {
     id: 3,
     user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile3.png"),
+      name: "Jhon wilson",
+      // image: require("../assets/images/message/chat/profile3.png"),
+      image: require("../assets/images/home/items/img3.jpg"),
     },
     lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
     unseen: 0,
@@ -29,8 +32,9 @@ export const chats = [
   {
     id: 4,
     user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile4.png"),
+      name: "David Brown",
+      // image: require("../assets/images/message/chat/profile4.png"),
+      image: require("../assets/images/home/items/img4.jpg"),
     },
     lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
     unseen: 0,
@@ -38,26 +42,9 @@ export const chats = [
   {
     id: 5,
     user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile5.png"),
-    },
-    lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
-    unseen: 0,
-  },
-  {
-    id: 6,
-    user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile6.png"),
-    },
-    lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
-    unseen: 0,
-  },
-  {
-    id: 7,
-    user: {
-      name: "Sahara Ardia Fadia",
-      image: require("../assets/images/message/chat/profile7.png"),
+      name: "Kristina Jackson",
+      // image: require("../assets/images/message/chat/profile5.png"),
+      image: require("../assets/images/home/items/img5.jpg"),
     },
     lastMessage: { message: "Okay see you soon", createdAt: "12:32 AM" },
     unseen: 0,
@@ -133,7 +120,7 @@ export const homeItems = [
   {
     id: 2,
     image: require("../assets/images/home/items/img2.jpg"),
-    name: "Michael Smith",
+    name: "Remy Singh",
     country: "California",
     age: 30,
     about: "A creative graphic designer with a passion for visual storytelling",
@@ -141,7 +128,7 @@ export const homeItems = [
   {
     id: 3,
     image: require("../assets/images/home/items/img3.jpg"),
-    name: "Sarah Johnson",
+    name: "Jhon wilson",
     country: "Texas",
     age: 28,
     about:
