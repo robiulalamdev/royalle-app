@@ -1,18 +1,22 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <SafeAreaView>
       <View className="">
         <View className="flex-row justify-between items-center min-h-[72px] w-full mt-[16px]">
-          <Image
-            className="w-[40px] h-[40px]"
-            source={require("../../assets/icons/global/menu.png")}
-            width={40}
-            height={40}
-          />
+          <Pressable onPress={() => router.push("filter")}>
+            <Image
+              className="w-[40px] h-[40px]"
+              source={require("../../assets/icons/global/menu.png")}
+              width={40}
+              height={40}
+            />
+          </Pressable>
           <Image
             className="flex-grow max-w-[148px] max-h-[28px]"
             source={require("../../assets/brand/logo.png")}
@@ -26,7 +30,6 @@ export default function Header() {
             resizeMode="contain"
           />
         </View>
-        <Text className="">Header</Text>
       </View>
     </SafeAreaView>
   );

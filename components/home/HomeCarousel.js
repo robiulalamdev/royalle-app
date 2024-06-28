@@ -49,7 +49,7 @@ export default function HomeCarousel() {
             className="w-[48px] h-[48px]"
           />
         </Pressable>
-        <Pressable onPress={() => router.push("filter")}>
+        <Pressable>
           <Image
             source={require("../../assets/icons/home/love.png")}
             className="w-[48px] h-[48px]"
