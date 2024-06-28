@@ -22,7 +22,9 @@ export default function HeightRange() {
     <View className="w-full mt-[20px]">
       <Text className="text-white text-[16px] font-medium leading-[24px]">
         Height{" "}
-        <Text className="text-[#FFFFFFB2] text-[12px] leading-[20px]">(m)</Text>
+        <Text className="text-[#FFFFFFB2] text-[12px] leading-[20px]">
+          (Ft)
+        </Text>
       </Text>
       <View className="">
         <MultiSlider

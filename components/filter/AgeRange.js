@@ -12,7 +12,7 @@ const CustomMarker = ({ currentValue }) => (
 );
 
 export default function AgeRange() {
-  const [ageRange, setAgeRange] = useState([16, 24]);
+  const [ageRange, setAgeRange] = useState([31, 35]);
 
   const handleValuesChange = (values) => {
     setAgeRange(values);
@@ -30,8 +30,8 @@ export default function AgeRange() {
         <MultiSlider
           values={ageRange}
           onValuesChange={handleValuesChange}
-          min={0}
-          max={100}
+          min={29}
+          max={39}
           step={1}
           selectedStyle={{ backgroundColor: "#52C3BE" }}
           unselectedStyle={{
