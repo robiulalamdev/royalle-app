@@ -22,7 +22,7 @@ export const chats = [
   {
     id: 3,
     user: {
-      name: "Jhon wilson",
+      name: "Jhon Wilson",
       // image: require("../assets/images/message/chat/profile3.png"),
       image: require("../assets/images/home/items/img3.jpg"),
     },
@@ -128,7 +128,7 @@ export const homeItems = [
   {
     id: 3,
     image: require("../assets/images/home/items/img3.jpg"),
-    name: "Jhon wilson",
+    name: "Jhon Wilson",
     country: "Texas",
     age: 28,
     about:
@@ -179,7 +179,7 @@ export const initialItems = [
     id: 3,
     logo: require("../assets/images/initial/hinge.png"),
     image: require("../assets/images/home/items/img3.jpg"),
-    name: "Jhon wilson",
+    name: "Jhon Wilson",
     country: "Texas",
     age: 28,
     about:
