@@ -12,7 +12,7 @@ const HeightMarker = ({ currentValue }) => (
 );
 
 export default function HeightRange() {
-  const [ageRange, setAgeRange] = useState([0, 6]);
+  const [ageRange, setAgeRange] = useState([2, 4]);
 
   const handleValuesChange = (values) => {
     setAgeRange(values);
@@ -32,7 +32,7 @@ export default function HeightRange() {
           enabledTwo={true}
           values={ageRange}
           onValuesChange={handleValuesChange}
-          min={0}
+          min={2}
           max={6}
           step={1}
           selectedStyle={{ backgroundColor: "#52C3BE" }}
