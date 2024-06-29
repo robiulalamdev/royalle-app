@@ -2,15 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SelectButton from "./SelectButton";
 
-const tabs = [
-  "Long term",
-  "Short term",
-  "Time pass",
-  "Dating",
-  "Dating",
-  "Time pass",
-  "Dating",
-];
+const tabs = ["Long term", "Short term", "Time pass", "Dating"];
 
 export default function LookingInput({ value, setSelect }) {
   return (

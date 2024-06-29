@@ -2,20 +2,24 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
-const HeightMarker = ({ currentValue }) => (
-  <View className="mt-[25px]">
-    <View className="bg-[#52C3BE] w-[20px] h-[20px] rounded-full ml-[12px]" />
-    <Text className="text-white font-normal text-[12px] leading-[20px] text-center ml-[12px]">
-      {currentValue}”
-    </Text>
-  </View>
-);
+const HeightMarker = ({ currentValue }) => {
+  const feet = Math.floor(currentValue / 12);
+  const inches = currentValue % 12;
+  return (
+    <View className="mt-[25px]">
+      <View className="bg-[#52C3BE] w-[20px] h-[20px] rounded-full ml-[12px]" />
+      <Text className="text-white font-normal text-[12px] leading-[20px] text-center ml-[12px]">
+        {feet}.{inches}"
+      </Text>
+    </View>
+  );
+};
 
 export default function HeightRange() {
-  const [ageRange, setAgeRange] = useState([2, 4]);
+  const [heightRange, setHeightRange] = useState([48]); // Initial value is 4 feet (48 inches)
 
   const handleValuesChange = (values) => {
-    setAgeRange(values);
+    setHeightRange(values);
   };
 
   return (
@@ -26,14 +30,14 @@ export default function HeightRange() {
           (ft - in)
         </Text>
       </Text>
-      <View className="">
+      <View>
         <MultiSlider
-          enabledOne={false}
-          enabledTwo={true}
-          values={ageRange}
+          enabledOne={true}
+          enabledTwo={false}
+          values={heightRange}
           onValuesChange={handleValuesChange}
-          min={2}
-          max={6}
+          min={36} // 3 feet in inches
+          max={72} // 6 feet in inches
           step={1}
           selectedStyle={{ backgroundColor: "#52C3BE" }}
           unselectedStyle={{
@@ -44,10 +48,7 @@ export default function HeightRange() {
           }}
           trackStyle={{ height: 8 }}
           isMarkersSeparated={true}
-          customMarkerLeft={() => (
-            <View className="bg-[#52C3BE] w-[8px] h-[8px] rounded-[16px] ml-[6px] mt-[8px]" />
-          )}
-          customMarkerRight={(e) => (
+          customMarkerLeft={(e) => (
             <HeightMarker currentValue={e.currentValue} />
           )}
           sliderLength={335}

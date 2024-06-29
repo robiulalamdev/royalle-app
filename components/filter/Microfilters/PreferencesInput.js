@@ -2,14 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SelectButton from "./SelectButton";
 
-const tabs = [
-  "Drinking",
-  "Smoking",
-  "Education",
-  "Outlook",
-  "Outlook",
-  "Smoking",
-];
+const tabs = ["Drinking", "Smoking", "Education", "Outlook"];
 
 export default function PreferencesInput({ values, handleSelect }) {
   return (

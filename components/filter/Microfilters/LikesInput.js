@@ -2,15 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SelectButton from "./SelectButton";
 
-const tabs = [
-  "Workout",
-  "Want kids",
-  "Want kids",
-  "Has kid",
-  "Want kids",
-  "Want kids",
-  "Others",
-];
+const tabs = ["Workout", "Want kids", "Has kid", "Others"];
 
 export default function LikesInput({ likes, setSelectLikes }) {
   return (
