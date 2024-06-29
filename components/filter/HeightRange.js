@@ -33,7 +33,7 @@ export default function HeightRange() {
           values={ageRange}
           onValuesChange={handleValuesChange}
           min={0}
-          max={10}
+          max={6}
           step={1}
           selectedStyle={{ backgroundColor: "#52C3BE" }}
           unselectedStyle={{
