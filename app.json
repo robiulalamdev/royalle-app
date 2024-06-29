@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "demo",
-    "slug": "demo",
+    "name": "ndemo",
+    "slug": "ndemo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -43,7 +43,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "e6cfa054-07bf-4f3b-9712-59f07eb2e994"
+        "projectId": "c3a97332-02f0-48ad-b402-ac2b9d5170bc"
       }
     },
     "owner": "robiulalamdx"
