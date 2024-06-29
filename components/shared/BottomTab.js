@@ -11,7 +11,7 @@ export default function BottomTab({ currentTab = "Home" }) {
         style={{ backgroundColor: "rgba(255, 255, 255, 0.12)" }}
       >
         <Pressable
-          onPress={() => router.push("/")}
+          onPress={() => router.push("(main)")}
           className={`w-[50px] h-[50px] flex-row justify-center items-center rounded-full ${
             currentTab === "Home" ? "bg-[#52C3BE1C]" : "bg-[#FFFFFF0A]"
           }`}
