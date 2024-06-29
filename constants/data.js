@@ -188,8 +188,8 @@ export const initialItems = [
   {
     id: 4,
     logo: require("../assets/images/initial/bodoo.png"),
-    image: require("../assets/images/home/items/img4.jpg"),
-    name: "David Brown",
+    image: require("../assets/images/home/items/img5.jpg"),
+    name: "Kristina Jackson",
     country: "Florida",
     age: 35,
     about:

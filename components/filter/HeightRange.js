@@ -23,7 +23,7 @@ export default function HeightRange() {
       <Text className="text-white text-[16px] font-medium leading-[24px]">
         Height{" "}
         <Text className="text-[#FFFFFFB2] text-[12px] leading-[20px]">
-          (Ft)
+          (ft - in)
         </Text>
       </Text>
       <View className="">

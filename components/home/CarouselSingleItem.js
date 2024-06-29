@@ -55,7 +55,7 @@ export default function CarouselSingleItem({ item, index }) {
                 className="text-white font-normal leading-[20px] text-[12px]"
                 style={{ fontFamily: "PoppinsRegular" }}
               >
-                2KM of you
+                2 miles of you
               </Text>
             </View>
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
