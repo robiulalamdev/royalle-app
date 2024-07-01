@@ -32,7 +32,7 @@ export const chats = [
   {
     id: 4,
     user: {
-      name: "David Brown",
+      name: "Carly Hargrove",
       // image: require("../assets/images/message/chat/profile4.png"),
       image: require("../assets/images/home/items/img4.jpg"),
     },
@@ -137,7 +137,7 @@ export const homeItems = [
   {
     id: 4,
     image: require("../assets/images/home/items/img4.jpg"),
-    name: "David Brown",
+    name: "Carly Hargrove",
     country: "Florida",
     age: 35,
     about:
