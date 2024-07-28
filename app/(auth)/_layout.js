@@ -16,6 +16,18 @@ export default function AuthLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="bumble"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="tinder"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

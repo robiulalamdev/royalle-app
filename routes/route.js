@@ -42,6 +42,7 @@ const Route = () => {
                 headerShown: false,
               }}
             />
+
             <Stack.Screen
               name="(auth)"
               options={{

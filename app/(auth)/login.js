@@ -1,6 +1,13 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Image,
+} from "react-native";
 import React from "react";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/user/userSlice";
@@ -8,6 +15,7 @@ import { setUser } from "../../redux/user/userSlice";
 export default function LoginScreen() {
   const { user } = useSelector((state) => state.nonPersisted.user);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleLogin = async () => {
     dispatch(
@@ -44,9 +52,40 @@ export default function LoginScreen() {
             Login
           </Text>
         </Pressable>
+
+        <View className="mt-[36px]">
+          <Pressable
+            onPress={() => router.push("bumble")}
+            className="px-[20px] py-[10px] bg-yellow-600 rounded-[32px] flex-row justify-center items-center"
+          >
+            <Image
+              source={require("../../assets/images/auth/bumbleLogo.png")}
+              resizeMode="contain"
+              width={30}
+              height={30}
+              className="w-[30px] h-[30px] mr-3"
+            />
+            <Text className="text-center font-medium text-[#010404] leading-[24px] text-[16px]">
+              Login with Bumble
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => router.push("(auth)/tinder")}
+            className="px-[20px] py-[10px] bg-white rounded-[32px] mt-[16px] flex-row justify-center items-center"
+          >
+            <Image
+              source={require("../../assets/images/auth/tinderLogo.png")}
+              resizeMode="contain"
+              width={30}
+              height={30}
+              className="w-[30px] h-[30px] mr-3"
+            />
+            <Text className="text-center font-medium text-black leading-[24px] text-[16px]">
+              Login with tinder
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});
