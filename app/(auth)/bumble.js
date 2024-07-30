@@ -10,7 +10,11 @@ export default function BumbleScreen() {
 
   const handleLogin = async () => {
     dispatch(
-      setUser({ name: "username", email: "nahid@gmail.com", password: "1234" })
+      setUser({
+        name: "username",
+        email: "username@gmail.com",
+        password: "1234",
+      })
     );
     router.push("(main)");
   };
