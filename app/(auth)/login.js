@@ -11,6 +11,8 @@ import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/user/userSlice";
+import FacebookLogin from "../../components/auth/FacebookLogin";
+import GoogleLogin from "../../components/auth/GoogleLogin";
 
 export default function LoginScreen() {
   const { user } = useSelector((state) => state.nonPersisted.user);
@@ -84,6 +86,8 @@ export default function LoginScreen() {
               Login with tinder
             </Text>
           </Pressable>
+          <FacebookLogin />
+          <GoogleLogin />
         </View>
       </View>
     </SafeAreaView>

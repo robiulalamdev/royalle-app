@@ -3,9 +3,21 @@
     "name": "ndemo",
     "slug": "ndemo",
     "version": "1.0.0",
+    "plugins": [
+      "expo-router",
+      "@react-native-google-signin/google-signin",
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "941161364444352",
+          "clientToken": "27a35c6fcbfa13f6e30a1384c7438d3d",
+          "displayName": "ndemo"
+        }
+      ]
+    ],
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "ndemo",
     "userInterfaceStyle": "automatic",
     "main": "expo-router/entry",
     "splash": {
@@ -25,6 +37,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.nahid.demo"
     },
     "web": {
@@ -32,9 +45,6 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
-      "expo-router"
-    ],
     "experiments": {
       "typedRoutes": true
     },

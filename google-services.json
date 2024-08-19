@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "700335429348",
+        "project_id": "dating-app-b14a9",
+        "storage_bucket": "dating-app-b14a9.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:700335429348:android:544bb70b68e47e579bfef1",
+                "android_client_info": {
+                    "package_name": "com.nahid.demo"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "700335429348-5d6022sbfehjfaegvt2bnlas2t7s44pb.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyA9iFckp_2ZQ-m0ZaNZ0oDBpw0YAi-LEqQ"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "700335429348-5d6022sbfehjfaegvt2bnlas2t7s44pb.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
