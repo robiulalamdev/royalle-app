@@ -1,32 +1,61 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import {
   GoogleSignin,
   GoogleSigninButton,
+  statusCodes,
 } from "@react-native-google-signin/google-signin";
 import { useEffect, useState } from "react";
 
 export default function GoogleLogin() {
-  //   const [error, setError] = useState(null);
-  //   const [userInfo, setUserInfo] = useState(null);
+  _signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      setState({ userInfo, error: undefined });
+    } catch (error) {
+      if (isErrorWithCode(error)) {
+        switch (error.code) {
+          case statusCodes.SIGN_IN_CANCELLED:
+            // user cancelled the login flow
+            break;
+          case statusCodes.IN_PROGRESS:
+            // operation (eg. sign in) already in progress
+            break;
+          case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+            // play services not available or outdated
+            break;
+          default:
+          // some other error happened
+        }
+      } else {
+        // an error that's not related to google sign in occurred
+      }
+    }
+  };
 
-  //   useEffect(() => {
-  //     GoogleSignin.configure({
-  //       webClientId:
-  //         "700335429348-5d6022sbfehjfaegvt2bnlas2t7s44pb.apps.googleusercontent.com",
-  //     });
-  //   }, []);
+  const [error, setError] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
-  //   const signin = async () => {
-  //     try {
-  //       await GoogleSignin.hasPlayServices();
-  //       const user = await GoogleSignin.signIn();
-  //       setUserInfo(user);
-  //       setError();
-  //     } catch (e) {
-  //       setError(e);
-  //     }
-  //   };
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        "700335429348-5d6022sbfehjfaegvt2bnlas2t7s44pb.apps.googleusercontent.com",
+    });
+  }, []);
+
+  const signin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const user = await GoogleSignin.signIn();
+      console.log(user);
+      setUserInfo(user);
+      setError();
+    } catch (e) {
+      console.log(e);
+      setError(e);
+    }
+  };
 
   //   const logout = () => {
   //     setUserInfo();
@@ -42,7 +71,19 @@ export default function GoogleLogin() {
         size={GoogleSigninButton.Size.Standard}
         color={GoogleSigninButton.Color.Dark}
         onPress={signin}
-      /> */}
+      /> 
+      */}
+      <Pressable onPress={() => _signIn()}>
+        <Text>Google</Text>
+      </Pressable>
+      {userInfo && (
+        <Text style={{ color: "black" }}>{JSON.stringify(userInfo.user)}</Text>
+      )}
+      <GoogleSigninButton
+        size={GoogleSigninButton.Size.Standard}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={signin}
+      />
     </View>
   );
 }

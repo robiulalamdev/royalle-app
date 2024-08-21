@@ -15,8 +15,10 @@ import HeightRange from "../../../components/filter/HeightRange";
 import GenderInput from "../../../components/filter/GenderInput";
 import LocationInput from "../../../components/filter/LocationInput";
 import Microfilters from "../../../components/filter/Microfilters";
+import { useSelector } from "react-redux";
 
 export default function FilterScreen() {
+  const { user } = useSelector((state) => state.nonPersisted.user);
   const [gender, setGender] = useState("Male");
   const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");
@@ -37,11 +39,19 @@ export default function FilterScreen() {
             Filter Search
           </Text>
         </View>
-        <Image
-          source={require("../../../assets/images/global/profile.png")}
-          className="w-[40px] h-[40px] rounded-full object-cover"
-          resizeMode="cover"
-        />
+        {user && user?.image ? (
+          <Image
+            source={{ uri: user?.image }}
+            className="w-[40px] h-[40px] rounded-full object-cover"
+            resizeMode="cover"
+          />
+        ) : (
+          <Image
+            source={require("../../../assets/images/global/profile.png")}
+            className="w-[40px] h-[40px] rounded-full object-cover"
+            resizeMode="cover"
+          />
+        )}
       </View>
 
       <ScrollView

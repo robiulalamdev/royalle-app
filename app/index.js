@@ -11,6 +11,8 @@ export default function WelcomeScreen() {
   const handleItem = async () => {
     router.push("(main)");
   };
+
+  // console.log(user);
   return (
     <SafeAreaView className="bg-black px-[3px] py-[10px] flex-1 w-full h-full">
       {/* <Button title="Login" onPress={() => router.push("login")} /> */}

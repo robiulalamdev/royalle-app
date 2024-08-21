@@ -13,8 +13,10 @@ import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
 import SingleChat from "../../../components/message/chats/SingleChat";
 import { chats } from "../../../constants/data";
 import BottomTab from "../../../components/shared/BottomTab";
+import { useSelector } from "react-redux";
 
 export default function MessageScreen() {
+  const { user } = useSelector((state) => state.nonPersisted.user);
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
   const router = useRouter();
 
@@ -37,10 +39,19 @@ export default function MessageScreen() {
             Matches
           </Text>
         </View>
-        <Image
-          source={require("../../../assets/images/message/chat/profile1.png")}
-          className="w-[40px] h-[40px]"
-        />
+
+        {user && user?.image ? (
+          <Image
+            source={{ uri: user?.image }}
+            resizeMode="cover"
+            className="w-[40px] h-[40px] rounded-full"
+          />
+        ) : (
+          <Image
+            source={require("../../../assets/images/message/chat/profile1.png")}
+            className="w-[40px] h-[40px] rounded-full"
+          />
+        )}
       </View>
 
       <ScrollView

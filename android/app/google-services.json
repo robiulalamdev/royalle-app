@@ -14,6 +14,14 @@
             },
             "oauth_client": [
                 {
+                    "client_id": "700335429348-h0m4uqsl0ma0e602ljof70ld59gkmo6d.apps.googleusercontent.com",
+                    "client_type": 1,
+                    "android_info": {
+                        "package_name": "com.nahid.demo",
+                        "certificate_hash": "475da948e4ba44d9b5bc31ab4b8006113fd5f538"
+                    }
+                },
+                {
                     "client_id": "700335429348-5d6022sbfehjfaegvt2bnlas2t7s44pb.apps.googleusercontent.com",
                     "client_type": 3
                 }
