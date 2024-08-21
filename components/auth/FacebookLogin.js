@@ -35,7 +35,9 @@ const FacebookLogin = () => {
       };
       if (userData) {
         await dispatch(setUser(userData));
-        router.push("(main)");
+        setTimeout(() => {
+          router.push("(main)");
+        }, 500);
       }
     } catch (error) {
       console.error("Failed to fetch Facebook user info:", error);
