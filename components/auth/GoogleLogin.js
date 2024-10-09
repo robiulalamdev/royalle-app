@@ -1,8 +1,6 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import {
   GoogleSignin,
-  GoogleSigninButton,
   statusCodes,
 } from "@react-native-google-signin/google-signin";
 import { useEffect, useState } from "react";
@@ -65,34 +63,29 @@ export default function GoogleLogin() {
 
   return (
     <View style={styles.container}>
-      {/* <Text>{JSON.stringify(error)}</Text>
-      {userInfo && <Text>{JSON.stringify(userInfo.user)}</Text>}
-      <GoogleSigninButton
-        size={GoogleSigninButton.Size.Standard}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={signin}
-      /> 
-      */}
-      <Pressable onPress={() => _signIn()}>
-        <Text>Google</Text>
+      <Pressable
+        onPress={() => _signIn()}
+        className="px-[20px] py-[10px] bg-white rounded-[32px] mt-[16px] flex-row justify-center items-center"
+      >
+        <Image
+          source={require("../../assets/icons/auth/google.png")}
+          resizeMode="contain"
+          className="w-[30px] h-[30px] mr-3"
+        />
+        <Text className="text-center font-medium text-black leading-[24px] text-[16px]">
+          Login with Google
+        </Text>
       </Pressable>
-      {userInfo && (
-        <Text style={{ color: "black" }}>{JSON.stringify(userInfo.user)}</Text>
-      )}
+      {/* 
       <GoogleSigninButton
         size={GoogleSigninButton.Size.Standard}
         color={GoogleSigninButton.Color.Dark}
         onPress={signin}
-      />
+      /> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    minHeight: 400,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  container: {},
 });
