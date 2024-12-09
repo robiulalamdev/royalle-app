@@ -1,7 +1,9 @@
 import {
   ActivityIndicator,
+  FlatList,
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -14,6 +16,8 @@ import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
 import BottomTab from "../../components/shared/BottomTab";
 import HomeCarousel from "../../components/home/HomeCarousel";
 import PrivateRoute from "../../routes/privateRoute";
+import FriendCard from "../../components/common/items/FriendCard";
+import { homeItems } from "../../constants/data";
 
 const WelcomePage = () => {
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
@@ -29,7 +33,18 @@ const WelcomePage = () => {
         <View>
           <View className="px-[20px]">
             <Header />
-            <HomeCarousel />
+            <ScrollView>
+              <HomeCarousel />
+              <View className="">
+                {homeItems?.map((item, index) => (
+                  <FriendCard
+                    key={item?.id}
+                    item={item}
+                    className="mt-[32px]"
+                  />
+                ))}
+              </View>
+            </ScrollView>
           </View>
         </View>
         <BottomTab currentTab="Home" />

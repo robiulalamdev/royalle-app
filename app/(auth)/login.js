@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/user/userSlice";
 import FacebookLogin from "../../components/auth/FacebookLogin";
-import GoogleLogin from "../../components/auth/GoogleLogin";
+// import GoogleLogin from "../../components/auth/GoogleLogin";
 import { Settings } from "react-native-fbsdk-next";
 
 export default function LoginScreen() {
@@ -71,7 +71,7 @@ export default function LoginScreen() {
 
         <View className="mt-[36px]">
           <FacebookLogin />
-          <GoogleLogin />
+          {/* <GoogleLogin /> */}
         </View>
       </View>
     </SafeAreaView>

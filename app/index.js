@@ -15,7 +15,6 @@ export default function WelcomeScreen() {
   // console.log(user);
   return (
     <SafeAreaView className="bg-black px-[3px] py-[10px] flex-1 w-full h-full">
-      {/* <Button title="Login" onPress={() => router.push("login")} /> */}
       <View className="flex-row flex-wrap cursor-pointer">
         {initialItems.map((item, index) => (
           <Pressable
