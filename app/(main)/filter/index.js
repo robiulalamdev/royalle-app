@@ -18,7 +18,7 @@ import Microfilters from "../../../components/filter/Microfilters";
 import { useSelector } from "react-redux";
 
 export default function FilterScreen() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
   const [gender, setGender] = useState("Male");
   const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");

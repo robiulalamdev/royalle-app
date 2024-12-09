@@ -9,32 +9,21 @@ import userReducer from "./user/userSlice";
 
 // Reducers to persist
 const persistedReducers = combineReducers({
-  // posts: postsReducer,
+  user: userReducer,
+  post: userReducer,
   [api.reducerPath]: api.reducer,
 });
 
-// Reducers not to persist
-const nonPersistedReducers = combineReducers({
-  user: userReducer,
-});
-
-// Persist config for persisted reducers
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["posts"], // Specify which reducers you want to persist
+  whitelist: ["user"],
 };
 
 const persistedRootReducer = persistReducer(persistConfig, persistedReducers);
 
-// Combine persisted and non-persisted reducers
-const rootReducer = combineReducers({
-  persisted: persistedRootReducer,
-  nonPersisted: nonPersistedReducers,
-});
-
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedRootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

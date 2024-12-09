@@ -43,6 +43,12 @@ export default function AppLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="(profile)/index"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

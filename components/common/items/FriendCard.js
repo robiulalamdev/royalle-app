@@ -1,9 +1,10 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function FriendCard({ item, index, className = "" }) {
+export default function FriendCard({ item, className = "mt-[20px]" }) {
+  // console.log(className);
   return (
-    <View key={index} className={`relative max-h-[380px] w-full ${className}`}>
+    <View className={`relative max-h-[380px] w-full ${className}`}>
       <Image
         source={item?.image}
         className="max-h-[380px] w-full rounded-[15px] h-full"

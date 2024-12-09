@@ -4,8 +4,10 @@ import { Stack } from "expo-router";
 import { useSelector } from "react-redux";
 
 const Route = () => {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
   // const user = null || { _id: 1, name: "username", email: "email.com" };
+
+  console.log(user);
 
   return (
     <>
@@ -30,7 +32,7 @@ const Route = () => {
           <Stack
             initialRouteName="index"
             screenOptions={{
-              headerShown: false, // Apply globally to all screens under this Stack
+              headerShown: false,
             }}
             options={{
               headerShown: false,

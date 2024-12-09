@@ -6,13 +6,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 
 export default function WelcomeScreen() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
 
   const handleItem = async () => {
     router.push("(main)");
   };
 
-  // console.log(user);
   return (
     <SafeAreaView className="bg-black px-[3px] py-[10px] flex-1 w-full h-full">
       <View className="flex-row flex-wrap cursor-pointer">

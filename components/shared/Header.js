@@ -1,11 +1,18 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { useSelector } from "react-redux";
 
 export default function Header() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
   const router = useRouter();
 
   return (
@@ -25,23 +32,26 @@ export default function Header() {
             source={require("../../assets/brand/logo.png")}
             resizeMode="contain"
           />
-          {user && user?.image ? (
-            <Image
-              className="w-[40px] h-[40px] rounded-full"
-              source={{ uri: user?.image }}
-              width={148}
-              height={28}
-              resizeMode="contain"
-            />
-          ) : (
-            <Image
-              className="w-[40px] h-[40px] rounded-full"
-              source={require("../../assets/images/global/profile.png")}
-              width={148}
-              height={28}
-              resizeMode="contain"
-            />
-          )}
+
+          <TouchableOpacity onPress={() => router.push("(profile)")}>
+            {user && user?.image ? (
+              <Image
+                className="w-[40px] h-[40px] rounded-full"
+                source={{ uri: user?.image }}
+                width={148}
+                height={28}
+                resizeMode="contain"
+              />
+            ) : (
+              <Image
+                className="w-[40px] h-[40px] rounded-full"
+                source={require("../../assets/images/global/profile.png")}
+                width={148}
+                height={28}
+                resizeMode="contain"
+              />
+            )}
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

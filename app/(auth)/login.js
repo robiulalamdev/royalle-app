@@ -16,7 +16,7 @@ import FacebookLogin from "../../components/auth/FacebookLogin";
 import { Settings } from "react-native-fbsdk-next";
 
 export default function LoginScreen() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -39,6 +39,7 @@ export default function LoginScreen() {
 
     initializeFacebookSDK();
   }, []);
+
   return (
     <SafeAreaView className="bg-black px-[12px] py-2 flex-1 w-full h-full justify-center items-center">
       <View className="w-full px-4">

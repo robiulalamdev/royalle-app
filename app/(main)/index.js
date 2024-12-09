@@ -30,23 +30,18 @@ const WelcomePage = () => {
     <PrivateRoute>
       <View className="bg-black h-full flex-1 justify-between w-full">
         <StatusBar style="light" />
-        <View>
+        <ScrollView>
           <View className="px-[20px]">
             <Header />
-            <ScrollView>
-              <HomeCarousel />
-              <View className="">
-                {homeItems?.map((item, index) => (
-                  <FriendCard
-                    key={item?.id}
-                    item={item}
-                    className="mt-[32px]"
-                  />
-                ))}
-              </View>
-            </ScrollView>
+
+            <HomeCarousel />
+            <View className="">
+              {homeItems?.map((item, index) => (
+                <FriendCard key={index} item={item} className="mt-[20px]" />
+              ))}
+            </View>
           </View>
-        </View>
+        </ScrollView>
         <BottomTab currentTab="Home" />
       </View>
     </PrivateRoute>
