@@ -33,7 +33,7 @@ export default function Header() {
             resizeMode="contain"
           />
 
-          <TouchableOpacity onPress={() => router.push("(profile)")}>
+          <TouchableOpacity onPress={() => router.push("profile")}>
             {user && user?.image ? (
               <Image
                 className="w-[40px] h-[40px] rounded-full"

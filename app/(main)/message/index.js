@@ -16,7 +16,7 @@ import BottomTab from "../../../components/shared/BottomTab";
 import { useSelector } from "react-redux";
 
 export default function MessageScreen() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
+  const { user } = useSelector((state) => state.user);
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
   const router = useRouter();
 

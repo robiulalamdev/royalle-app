@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../redux/store";
 import Route from "../routes/route";
+import { PaperProvider } from "react-native-paper";
 
 const RootLayout = () => {
   const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
@@ -14,16 +15,18 @@ const RootLayout = () => {
   }
   return (
     <Provider store={store}>
-      <PersistGate
-        loading={
-          <View>
-            <Text>Loading...</Text>
-          </View>
-        }
-        persistor={persistor}
-      >
-        <Route />
-      </PersistGate>
+      <PaperProvider>
+        <PersistGate
+          loading={
+            <View>
+              <Text>Loading...</Text>
+            </View>
+          }
+          persistor={persistor}
+        >
+          <Route />
+        </PersistGate>
+      </PaperProvider>
     </Provider>
   );
 };
