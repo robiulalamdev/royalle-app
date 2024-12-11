@@ -23,6 +23,13 @@ export default function FilterScreen() {
   const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  const [eyeColor, setEyeColor] = useState("#A37042");
+  const [hairColor, setHairColor] = useState("#222222");
+  const [likes, setLikes] = useState("Workout");
+  const [looking, setLooking] = useState("Long term");
+  const [preferences, setPreferences] = useState(["Drinking"]);
 
   return (
     <SafeAreaView className="bg-black h-full flex-1 ">
@@ -68,7 +75,20 @@ export default function FilterScreen() {
           locationValue={locationValue}
           setLocationValue={setLocationValue}
         />
-        <Microfilters />
+        <Microfilters
+          open={open}
+          setOpen={setOpen}
+          eyeColor={eyeColor}
+          setEyeColor={setEyeColor}
+          hairColor={hairColor}
+          setHairColor={setHairColor}
+          likes={likes}
+          setLikes={setLikes}
+          looking={looking}
+          setLooking={setLooking}
+          preferences={preferences}
+          setPreferences={setPreferences}
+        />
         <Pressable className="px-[20px] py-[16px] bg-primary rounded-[28px] mt-[36px] mb-[26px]">
           <Text className="text-center font-medium text-[#010404] leading-[24px] text-[16px]">
             Apply filter

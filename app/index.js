@@ -1,13 +1,10 @@
-import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 import { initialItems } from "../constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
 
 export default function WelcomeScreen() {
-  const { user } = useSelector((state) => state.user);
-
   const handleItem = async () => {
     router.push("(main)");
   };

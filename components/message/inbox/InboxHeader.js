@@ -7,19 +7,9 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import {
-  useFonts,
-  Poppins_500Medium,
-  Poppins_400Regular,
-} from "@expo-google-fonts/poppins";
 
 export default function InboxHeader({ data = null }) {
-  const [fontsLoaded] = useFonts({
-    PoppinsMedium: Poppins_500Medium,
-    PoppinsRegular: Poppins_400Regular,
-  });
   const router = useRouter();
 
   if (!fontsLoaded) {
@@ -46,13 +36,13 @@ export default function InboxHeader({ data = null }) {
               numberOfLines={1}
               ellipsizeMode="tail"
               className="text-white text-[16px] font-medium leading-[20px]"
-              style={{ fontFamily: "PoppinsMedium" }}
+              style={{ fontFamily: "Poppins-Medium" }}
             >
               {data?.user?.name}
             </Text>
             <Text
               className="text-primary"
-              style={{ fontFamily: "PoppinsRegular" }}
+              style={{ fontFamily: "Poppins-Regular" }}
             >
               Online
             </Text>

@@ -61,8 +61,6 @@ const updateProfileScreen = () => {
     }, [user])
   );
 
-  console.log(user);
-
   return (
     <SafeAreaView className="bg-black h-full flex-1 px-[20px] py-[32px]">
       <StatusBar style="light" />

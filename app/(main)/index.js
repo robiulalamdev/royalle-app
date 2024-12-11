@@ -27,7 +27,7 @@ const WelcomePage = () => {
     return <ActivityIndicator />;
   }
   return (
-    <PrivateRoute>
+    <>
       <View className="bg-black h-full flex-1 justify-between w-full">
         <StatusBar style="light" />
         <ScrollView>
@@ -44,7 +44,7 @@ const WelcomePage = () => {
         </ScrollView>
         <BottomTab currentTab="Home" />
       </View>
-    </PrivateRoute>
+    </>
   );
 };
 

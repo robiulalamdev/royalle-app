@@ -37,7 +37,7 @@ export default function SendBotMessage({ handleSendMessage }) {
           placeholder="Write your message"
           className="flex-grow text-white leading-normal font-normal text-[13px] placeholder:!text-white max-w-[68%] pr-0 m-0"
           placeholderTextColor="white"
-          style={{ fontFamily: "PoppinsMedium" }}
+          style={{ fontFamily: "Poppins-Medium" }}
           accessibilityElementsHidden={true}
         />
       </View>

@@ -6,16 +6,18 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../../redux/user/userSlice";
+import { setUser } from "../../../redux/features/user/userSlice";
 import { useRouter } from "expo-router";
+import ProfileImage from "../../../components/common/auth/ProfileImage";
+import { useMyInfoQuery } from "../../../redux/features/user/userApi";
 
 const routes = [
-  { id: 1, name: "Favorites", path: "favorites" },
-  { id: 2, name: "Preferences", path: "preferences" },
-  { id: 3, name: "Subscription", path: "subscription" },
+  { id: 1, name: "Favorites", path: "profile/favorite" },
+  { id: 2, name: "Preferences", path: "profile/preference" },
+  { id: 3, name: "Subscription", path: "profile/subscription" },
 ];
 
 const ProfileScreen = () => {
@@ -25,6 +27,10 @@ const ProfileScreen = () => {
   const handleLogout = async () => {
     dispatch(setUser(null));
   };
+
+  const { data } = useMyInfoQuery();
+
+  // console.log(data);
 
   return (
     <SafeAreaView className="bg-black h-full flex-1 px-[20px] py-[32px]">
@@ -40,10 +46,8 @@ const ProfileScreen = () => {
         <View className="w-[40px] h-[40px]"></View>
       </View>
       <View className="flex-row justify-center items-center gap-x-[32px] mt-[32px]">
-        <Image
-          source={{
-            uri: "https://freesvg.org/img/abstract-user-flat-4.png",
-          }}
+        <ProfileImage
+          url={user?.image}
           resizeMode="cover"
           className="w-[100px] h-[100px] rounded-full"
         />
@@ -66,6 +70,7 @@ const ProfileScreen = () => {
       <View className="gap-y-[24px] mt-[52px]">
         {routes.map((item, index) => (
           <TouchableOpacity
+            onPress={() => router.push(item.path)}
             key={index}
             className="flex-row items-center gap-x-[12px]"
           >

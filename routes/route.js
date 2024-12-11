@@ -4,56 +4,35 @@ import { Stack } from "expo-router";
 import { useSelector } from "react-redux";
 
 const Route = () => {
-  const { user } = useSelector((state) => state.user);
-  // const user = null || { _id: 1, name: "username", email: "email.com" };
+  // const { user } = useSelector((state) => state.user);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
-      {user ? (
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
+      <Stack
+        initialRouteName="(main)"
+        screenOptions={{
+          headerShown: false,
+        }}
+        options={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen
+          name="(main)"
           options={{
             headerShown: false,
           }}
-        >
-          <Stack.Screen
-            name="(main)"
-            options={{
-              headerShown: false,
-            }}
-          />
-        </Stack>
-      ) : (
-        <>
-          <Stack
-            initialRouteName="index"
-            screenOptions={{
-              headerShown: false,
-            }}
-            options={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen
-              name="index"
-              options={{
-                headerShown: false,
-              }}
-            />
+        />
 
-            <Stack.Screen
-              name="(auth)"
-              options={{
-                headerShown: false,
-              }}
-            />
-          </Stack>
-        </>
-      )}
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack>
     </>
   );
 };

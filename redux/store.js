@@ -5,7 +5,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "./api/api"; // Assuming you have an api defined
-import userReducer from "./user/userSlice";
+import userReducer from "./features/user/userSlice";
 
 // Reducers to persist
 const persistedReducers = combineReducers({
