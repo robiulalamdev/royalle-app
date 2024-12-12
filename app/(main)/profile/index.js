@@ -14,6 +14,7 @@ import { useRouter } from "expo-router";
 import ProfileImage from "../../../components/common/auth/ProfileImage";
 import { Assets } from "../../../lib/assets";
 import moment from "moment";
+import { Badge } from "react-native-paper";
 
 const routes = [
   {
@@ -66,7 +67,7 @@ const ProfileScreen = () => {
     <SafeAreaView className="bg-black h-full flex-1 py-[32px] justify-between w-full">
       <StatusBar style="light" />
       <View>
-        <View className="flex-row items-center justify-between w-full h-[50px] px-[px]">
+        <View className="flex-row items-center justify-between w-full h-[50px] px-[10px]">
           <Pressable onPress={() => router.back()}>
             <Image
               source={require("../../../assets/images/message/inbox/leftArrow.png")}
@@ -78,7 +79,13 @@ const ProfileScreen = () => {
           </Text>
 
           <View className="w-[40px] h-[40px] justify-center items-center">
-            <Pressable onPress={() => router.push("profile/notifications")}>
+            <Pressable
+              onPress={() => router.push("profile/notifications")}
+              className="relative"
+            >
+              <Badge className="absolute -top-[11px] -right-[11px] z-50">
+                3
+              </Badge>
               <Image
                 source={Assets.Icons.bell}
                 resizeMode="contain"
@@ -100,7 +107,7 @@ const ProfileScreen = () => {
             </Text>
             <Text className="text-white/90 leading-[24px]">{user?.email}</Text>
             <Text className="font-Poppins-Regular text-[#eef2f7] text-[12px] mt-[2px]">
-              Register: {moment(user?.createdAt).format("MMM DD YYYY")}
+              Register: {moment(user?.createdAt).format("MMM DD, YYYY")}
             </Text>
           </View>
         </View>
@@ -120,6 +127,7 @@ const ProfileScreen = () => {
               <Text className="text-white text-[16px] font-medium">
                 {item.name}
               </Text>
+              {item?.name === "Notifications" && <Badge className="">3</Badge>}
             </TouchableOpacity>
           ))}
           <TouchableOpacity
@@ -138,7 +146,7 @@ const ProfileScreen = () => {
         </View>
       </View>
       <Text className="text-gray-300 text-[14px] font-Poppins-Regular text-center">
-        Beta version: 1.0.0
+        Version: beta - 1.0.0
       </Text>
     </SafeAreaView>
   );
