@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../redux/features/user/userSlice";
 import { useRouter } from "expo-router";
 import ProfileImage from "../../../components/common/auth/ProfileImage";
-import { useMyInfoQuery } from "../../../redux/features/user/userApi";
 import { Assets } from "../../../lib/assets";
 import moment from "moment";
 
@@ -31,18 +30,24 @@ const routes = [
   },
   {
     id: 3,
+    name: "Notifications",
+    path: "profile/notifications",
+    image: Assets.Icons.bell,
+  },
+  {
+    id: 4,
     name: "Favorites",
     path: "profile/favorite",
     image: Assets.Icons.favorite,
   },
   {
-    id: 4,
+    id: 5,
     name: "Preferences",
     path: "profile/preference",
     image: Assets.Icons.preference,
   },
   {
-    id: 5,
+    id: 6,
     name: "Subscription",
     path: "profile/subscription",
     image: Assets.Icons.premium,
@@ -71,7 +76,16 @@ const ProfileScreen = () => {
           <Text className="text-white font-Poppins-Medium leading-[18px]">
             Profile
           </Text>
-          <View className="w-[40px] h-[40px]"></View>
+
+          <View className="w-[40px] h-[40px] justify-center items-center">
+            <Pressable onPress={() => router.push("profile/notifications")}>
+              <Image
+                source={Assets.Icons.bell}
+                resizeMode="contain"
+                className="w-[20px] h-[20px]"
+              />
+            </Pressable>
+          </View>
         </View>
 
         <View className="flex-row items-center gap-x-[32px] mt-[32px] px-[20px]">
