@@ -36,7 +36,7 @@ export default function WelcomeScreen() {
                 <View className="flex-row items-center gap-x-[12px] w-full">
                   <Text
                     className="text-white font-semibold leading-[30px] text-[14px]"
-                    style={{ fontFamily: "PoppinsRegular" }}
+                    style={{ fontFamily: "Poppins-Regular" }}
                   >
                     {item?.name}
                   </Text>
@@ -55,7 +55,7 @@ export default function WelcomeScreen() {
                     <View className="max-w-[80%]">
                       <Text
                         className="text-white/90 font-normal leading-[18px] text-[12px]"
-                        style={{ fontFamily: "PoppinsRegular" }}
+                        style={{ fontFamily: "Poppins-Regular" }}
                       >
                         {item?.about.slice(0, 30)}
                       </Text>

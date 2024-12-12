@@ -9,7 +9,6 @@ import {
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
 import SingleChat from "../../../components/message/chats/SingleChat";
 import { chats } from "../../../constants/data";
 import BottomTab from "../../../components/shared/BottomTab";
@@ -17,12 +16,7 @@ import { useSelector } from "react-redux";
 
 export default function MessageScreen() {
   const { user } = useSelector((state) => state.user);
-  const [fontsLoaded] = useFonts({ PoppinsRegular: Poppins_400Regular });
   const router = useRouter();
-
-  if (!fontsLoaded) {
-    return <ActivityIndicator />;
-  }
 
   const handleChat = (selectChat) => {
     router.push(`message/${selectChat?.id}`);

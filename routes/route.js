@@ -1,12 +1,10 @@
 // route.js
 import React, { useState } from "react";
 import { Stack } from "expo-router";
-import { useSelector } from "react-redux";
+import { useMyInfoQuery } from "../redux/features/user/userApi";
 
 const Route = () => {
-  // const { user } = useSelector((state) => state.user);
-
-  // console.log(user);
+  useMyInfoQuery();
 
   return (
     <>

@@ -13,7 +13,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
         <View className="flex-row items-center gap-x-[12px] w-full">
           <Text
             className="text-white font-semibold leading-[30px] text-[22px]"
-            style={{ fontFamily: "PoppinsRegular" }}
+            style={{ fontFamily: "Poppins-Regular" }}
           >
             {item?.name}
           </Text>
@@ -32,7 +32,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
             <View className="max-w-[80%]">
               <Text
                 className="text-white/90 font-normal leading-[18px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 {item?.about}
               </Text>
@@ -54,7 +54,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
               />
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 2 Miles of you
               </Text>
@@ -62,7 +62,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 {item?.country}
               </Text>
@@ -70,7 +70,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 {item?.age} {item?.age > 1 ? "years" : "year"}
               </Text>

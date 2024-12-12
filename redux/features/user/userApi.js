@@ -50,6 +50,15 @@ const usersApi = api.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+
+    updateUser: builder.mutation({
+      query: ({ data }) => ({
+        url: `/users/update`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
@@ -59,4 +68,5 @@ export const {
   useCreateUserMutation,
   useCheckEmailExistMutation,
   useUpdateUserInfoMutation,
+  useUpdateUserMutation,
 } = usersApi;

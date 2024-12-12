@@ -25,7 +25,7 @@ export default function SingleBotMessage({ data = null }) {
             <View className="bg-primary px-[16px] py-[12px] rounded-[24px_24px_24px_0px] max-w-[75%]">
               <Text
                 className="text-[#010101] text-[14px] leading-[20px] font-normal"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 {data?.message}
               </Text>
@@ -36,7 +36,7 @@ export default function SingleBotMessage({ data = null }) {
             <View className="bg-[#FFFFFF1F] px-[16px] py-[12px] rounded-[24px_24px_0px_24px] max-w-[75%]">
               <Text
                 className="text-white text-[14px] leading-[20px] font-normal"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
                 {data?.message}
               </Text>

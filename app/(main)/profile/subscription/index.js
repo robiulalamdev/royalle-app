@@ -147,7 +147,7 @@ const SubscriptionScreen = () => {
                     <Image
                       source={Assets.Icons.premium_badge}
                       resizeMode="contain"
-                      className="w-[28px] h-[28px]"
+                      className="w-[24px] h-[24px]"
                     />
                     <Text className="text-gray-300 font-Poppins-Medium text-[14px] leading-[20px]">
                       {ftr}
