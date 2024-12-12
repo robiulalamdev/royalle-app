@@ -1,5 +1,5 @@
 import { api } from "../../api/api";
-import { setUser } from "./userSlice";
+import { setFeeds, setUser } from "./userSlice";
 
 const usersApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,6 +10,18 @@ const usersApi = api.injectEndpoints({
         const result = await queryFulfilled;
         if (result?.data?.data) {
           dispatch(setUser(result?.data?.data));
+        }
+      },
+      providesTags: ["users"],
+    }),
+
+    myFeeds: builder.query({
+      query: () => "/users/feeds",
+
+      async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
+        const result = await queryFulfilled;
+        if (result?.data?.data) {
+          dispatch(setFeeds(result?.data?.data));
         }
       },
       providesTags: ["users"],
@@ -64,6 +76,7 @@ const usersApi = api.injectEndpoints({
 
 export const {
   useMyInfoQuery,
+  useMyFeedsQuery,
   usePostLoginMutation,
   useCreateUserMutation,
   useCheckEmailExistMutation,

@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Image,
   Pressable,
+  ScrollView,
 } from "react-native";
 import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
@@ -15,6 +16,7 @@ import ProfileImage from "../../../components/common/auth/ProfileImage";
 import { Assets } from "../../../lib/assets";
 import moment from "moment";
 import { Badge } from "react-native-paper";
+import { USER_CONFIG } from "../../../config";
 
 const routes = [
   {
@@ -60,6 +62,7 @@ const ProfileScreen = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleLogout = async () => {
+    USER_CONFIG.REMOVE_FROM_STORAGE(USER_CONFIG.TOKEN_NAME);
     dispatch(setUser(null));
   };
 
@@ -67,7 +70,7 @@ const ProfileScreen = () => {
     <SafeAreaView className="bg-black h-full flex-1 py-[32px] justify-between w-full">
       <StatusBar style="light" />
       <View>
-        <View className="flex-row items-center justify-between w-full h-[50px] px-[10px]">
+        <View className="bg-black flex-row items-center justify-between w-full h-[50px] px-[10px]">
           <Pressable onPress={() => router.back()}>
             <Image
               source={require("../../../assets/images/message/inbox/leftArrow.png")}
@@ -95,55 +98,73 @@ const ProfileScreen = () => {
           </View>
         </View>
 
-        <View className="flex-row items-center gap-x-[32px] mt-[32px] px-[20px]">
-          <ProfileImage
-            url={user?.image}
-            resizeMode="cover"
-            className="w-[100px] h-[100px] rounded-full"
-          />
-          <View className="">
-            <Text className="text-white font-bold text-[16px] leading-[24px]">
-              {user?.name}
-            </Text>
-            <Text className="text-white/90 leading-[24px]">{user?.email}</Text>
-            <Text className="font-Poppins-Regular text-[#eef2f7] text-[12px] mt-[2px]">
-              Register: {moment(user?.createdAt).format("MMM DD, YYYY")}
-            </Text>
+        <ScrollView>
+          <View className="flex-row items-center gap-x-[32px] mt-[32px] px-[20px]">
+            <ProfileImage
+              url={user?.image}
+              resizeMode="cover"
+              className="w-[100px] h-[100px] rounded-full"
+            />
+            <View className="">
+              <Text className="text-white font-bold text-[18px] leading-[24px]">
+                {user?.name}
+              </Text>
+              <Text className="text-white/90 leading-[24px]">
+                {user?.email}
+              </Text>
+              <Text className="font-Poppins-Regular text-[#eef2f7] text-[12px] mt-[2px]">
+                Register: {moment(user?.createdAt).format("MMM DD, YYYY")}
+              </Text>
+            </View>
           </View>
-        </View>
 
-        <View className="gap-y-[24px] mt-[52px] px-[20px]">
-          {routes.map((item, index) => (
+          {user?.bio && (
+            <View className="px-[20px] mt-[20px]">
+              <Text className="text-white/90 font-Poppins-Regular leading-[24px]">
+                {user?.bio}
+              </Text>
+            </View>
+          )}
+
+          {user?.bio && (
+            <View className="border-[0.5px] border-white/60 mt-[20px]"></View>
+          )}
+
+          <View className="gap-y-[24px] mt-[25px] px-[20px]">
+            {routes.map((item, index) => (
+              <TouchableOpacity
+                onPress={() => router.push(item.path)}
+                key={index}
+                className="flex-row items-center gap-x-[12px]"
+              >
+                <Image
+                  source={item?.image}
+                  resizeMode="contain"
+                  className="w-[20px] h-[20px]"
+                />
+                <Text className="text-white text-[16px] font-medium">
+                  {item.name}
+                </Text>
+                {item?.name === "Notifications" && (
+                  <Badge className="">3</Badge>
+                )}
+              </TouchableOpacity>
+            ))}
             <TouchableOpacity
-              onPress={() => router.push(item.path)}
-              key={index}
+              onPress={() => handleLogout()}
               className="flex-row items-center gap-x-[12px]"
             >
               <Image
-                source={item?.image}
+                source={Assets.Icons.logout}
                 resizeMode="contain"
                 className="w-[20px] h-[20px]"
               />
-              <Text className="text-white text-[16px] font-medium">
-                {item.name}
+              <Text className="text-red-600 font-medium text-[16px]">
+                Log out
               </Text>
-              {item?.name === "Notifications" && <Badge className="">3</Badge>}
             </TouchableOpacity>
-          ))}
-          <TouchableOpacity
-            onPress={() => handleLogout()}
-            className="flex-row items-center gap-x-[12px]"
-          >
-            <Image
-              source={Assets.Icons.logout}
-              resizeMode="contain"
-              className="w-[20px] h-[20px]"
-            />
-            <Text className="text-red-600 font-medium text-[16px]">
-              Log out
-            </Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </ScrollView>
       </View>
       <Text className="text-gray-300 text-[14px] font-Poppins-Regular text-center">
         Version: beta - 1.0.0

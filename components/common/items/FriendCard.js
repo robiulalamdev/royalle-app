@@ -1,12 +1,12 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function FriendCard({ item, className = "mt-[20px]" }) {
+export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
   // console.log(className);
   return (
     <View className={`relative max-h-[380px] w-full ${className}`}>
       <Image
-        source={item?.image}
+        source={{ uri: item?.user?.image }}
         className="max-h-[380px] w-full rounded-[15px] h-full"
       />
       <View className="absolute bottom-0 right-0 left-0 w-full px-[8px] pb-[8px]">
@@ -15,7 +15,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
             className="text-white font-semibold leading-[30px] text-[22px]"
             style={{ fontFamily: "Poppins-Regular" }}
           >
-            {item?.name}
+            {item?.user?.name}
           </Text>
           <Image
             source={require("../../../assets/icons/home/info.png")}
@@ -34,7 +34,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
                 className="text-white/90 font-normal leading-[18px] text-[12px]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.about}
+                {item?.user?.about}
               </Text>
             </View>
             <Image
@@ -56,7 +56,8 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
                 className="text-white font-normal leading-[20px] text-[12px]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                2 Miles of you
+                {item?.distance?.miles} Miles of you
+                {/* 2 Miles of you */}
               </Text>
             </View>
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
@@ -64,7 +65,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
                 className="text-white font-normal leading-[20px] text-[12px]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.country}
+                {item?.user?.location?.country}
               </Text>
             </View>
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
@@ -72,7 +73,7 @@ export default function FriendCard({ item, className = "mt-[20px]" }) {
                 className="text-white font-normal leading-[20px] text-[12px]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.age} {item?.age > 1 ? "years" : "year"}
+                {item?.user?.age} {item?.user?.age > 1 ? "years" : "year"}
               </Text>
             </View>
           </View>

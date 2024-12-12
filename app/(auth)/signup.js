@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import { useFocusEffect, useRouter } from "expo-router";
+import React, { useState } from "react";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Assets } from "../../lib/assets";
 import { getMyLocation, pickImageFromGallery } from "../../lib/services";
 import {
@@ -28,7 +28,6 @@ import { USER_CONFIG } from "../../config";
 import { setUser } from "../../redux/features/user/userSlice";
 
 const SignupScreen = () => {
-  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
   const toast = useToast();
@@ -42,6 +41,7 @@ const SignupScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
 
   const [step, setStep] = useState(1);
 
@@ -58,6 +58,10 @@ const SignupScreen = () => {
   const [image, setImage] = useState(null);
 
   const handleSignup = async () => {
+    if (!bio) {
+      toast.show("Bio is required", { type: "warning" });
+      return;
+    }
     if (ageRange?.length === 0) {
       toast.show("Age is required", { type: "warning" });
       return;
@@ -107,6 +111,7 @@ const SignupScreen = () => {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
+    formData.append("bio", bio);
     formData.append("age", ageRange[0]);
     formData.append("height", height[0]);
     formData.append("gender", gender);
@@ -307,6 +312,24 @@ const SignupScreen = () => {
             showsVerticalScrollIndicator={true}
             className="w-full px-[12px] mt-[32px]"
           >
+            <View className="mb-[16px]">
+              <Text className="text-white text-[16px] font-medium leading-[24px]">
+                Bio
+              </Text>
+              <TextInput
+                value={bio}
+                onChangeText={(text) => setBio(text)}
+                inputMode="text"
+                placeholder="Enter your bio"
+                className="w-full flex-grow text-white text-[13px] placeholder:!text-white border border-gray-400 py-[12px] px-3 
+            max-h-[180px] min-h-[110px] rounded-[6px] mt-[8px]"
+                placeholderTextColor="gray"
+                scrollEnabled={true}
+                multiline={true} // Ensures multi-line behavior
+                textAlignVertical="top" // Aligns text to the top
+                style={{ fontFamily: "Poppins-Medium" }}
+              />
+            </View>
             <AgeInput ageRange={ageRange} setAgeRange={setAgeRange} />
             <HeightInput values={height} setValues={setHeight} />
             <GenderInput gender={gender} setGender={setGender} />

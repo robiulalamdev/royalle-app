@@ -1,7 +1,10 @@
 // route.js
 import React, { useState } from "react";
 import { Stack } from "expo-router";
-import { useMyInfoQuery } from "../redux/features/user/userApi";
+import {
+  useMyFeedsQuery,
+  useMyInfoQuery,
+} from "../redux/features/user/userApi";
 
 const Route = () => {
   useMyInfoQuery();
