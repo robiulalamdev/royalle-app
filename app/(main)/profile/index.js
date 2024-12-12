@@ -14,25 +14,38 @@ import { useRouter } from "expo-router";
 import ProfileImage from "../../../components/common/auth/ProfileImage";
 import { useMyInfoQuery } from "../../../redux/features/user/userApi";
 import { Assets } from "../../../lib/assets";
+import moment from "moment";
 
 const routes = [
   {
     id: 1,
+    name: "Account",
+    path: "profile/update-profile",
+    image: Assets.Icons.account,
+  },
+  {
+    id: 2,
+    name: "Friends",
+    path: "profile/friends",
+    image: Assets.Icons.friends,
+  },
+  {
+    id: 3,
     name: "Favorites",
     path: "profile/favorite",
     image: Assets.Icons.favorite,
   },
   {
-    id: 2,
+    id: 4,
     name: "Preferences",
     path: "profile/preference",
     image: Assets.Icons.preference,
   },
   {
-    id: 3,
+    id: 5,
     name: "Subscription",
     path: "profile/subscription",
-    image: Assets.Icons.subscription,
+    image: Assets.Icons.premium,
   },
 ];
 
@@ -72,14 +85,9 @@ const ProfileScreen = () => {
               {user?.name}
             </Text>
             <Text className="text-white/90 leading-[24px]">{user?.email}</Text>
-            <TouchableOpacity
-              onPress={() => router.push("/profile/update-profile")}
-              className="w-[90px] h-[28px] bg-primary flex-row p-0 justify-center items-center rounded-[6px] mt-[10px]"
-            >
-              <Text className="text-center font-Poppins-Medium text-[#010404] text-[12px]">
-                Edit Profile
-              </Text>
-            </TouchableOpacity>
+            <Text className="font-Poppins-Regular text-[#eef2f7] text-[12px] mt-[2px]">
+              Register: {moment(user?.createdAt).format("MMM DD YYYY")}
+            </Text>
           </View>
         </View>
 
