@@ -43,7 +43,6 @@ export default function HomeCarousel({ items = [] }) {
         data: {},
       };
       const result = await checkStatus(options);
-      console.log(result);
       if (result?.data?.success) {
         if (
           result?.data?.data?.status === FRIEND_STATUS.ACCEPTED &&

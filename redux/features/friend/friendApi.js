@@ -4,22 +4,18 @@ const friendApi = api.injectEndpoints({
   endpoints: (builder) => ({
     myFriends: builder.query({
       query: () => "/friends/me",
-      async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
-        const result = await queryFulfilled;
-        if (result?.data?.data) {
-          // dispatch(setNotifications(result?.data?.data));
-        }
-      },
+      // async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
+      // const result = await queryFulfilled;
+
+      // },
       providesTags: ["friends"],
     }),
     friendRequest: builder.query({
       query: () => "/friends/requests",
-      async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
-        const result = await queryFulfilled;
-        if (result?.data?.data) {
-          // dispatch(setNotifications(result?.data?.data));
-        }
-      },
+      // async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
+      //   const result = await queryFulfilled;
+
+      // },
       providesTags: ["friends"],
     }),
 

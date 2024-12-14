@@ -93,14 +93,28 @@ const MyFriends = () => {
         {selectedTab === "Requests" && (
           <>
             {requestData?.data?.map((item, index) => (
-              <FriendListItem key={index} item={item} />
+              <FriendListItem
+                key={index}
+                item={item}
+                refetch={() => {
+                  refetchFriendRequest();
+                  refetchFriends();
+                }}
+              />
             ))}
           </>
         )}
         {selectedTab === "Friends" && (
           <>
             {data?.data?.map((item, index) => (
-              <FriendListItem key={index} item={item} />
+              <FriendListItem
+                key={index}
+                item={item}
+                refetch={() => {
+                  refetchFriendRequest();
+                  refetchFriends();
+                }}
+              />
             ))}
           </>
         )}

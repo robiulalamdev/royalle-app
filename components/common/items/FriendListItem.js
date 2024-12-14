@@ -14,7 +14,7 @@ import { useToast } from "react-native-toast-notifications";
 import { FRIEND_STATUS } from "../../../constants/data";
 import { useSelector } from "react-redux";
 
-const FriendListItem = ({ item = {} }) => {
+const FriendListItem = ({ item = {}, refetch }) => {
   const { user } = useSelector((state) => state.user);
   const router = useRouter();
   const [rejectFriendRequest] = useRejectFriendRequestMutation();
@@ -25,8 +25,6 @@ const FriendListItem = ({ item = {} }) => {
   const [isRejectLoading, setIsRejectLoading] = useState(false);
   const [isAcceptLoading, setIsAcceptLoading] = useState(false);
   const [isCancelLoading, setIsCancelLoading] = useState(false);
-
-  const [visible, setVisible] = useState(null);
 
   const goto = async () => {
     console.log("click");
@@ -42,12 +40,12 @@ const FriendListItem = ({ item = {} }) => {
       };
       const result = await rejectFriendRequest(options);
       if (result?.data?.success) {
+        refetch();
         toast.show("Request rejected successfully", { type: "success" });
       } else {
         toast.show("Request rejected unsuccessfully", { type: "danger" });
       }
     }
-    setVisible(null);
     setIsRejectLoading(false);
   };
 
@@ -59,13 +57,14 @@ const FriendListItem = ({ item = {} }) => {
         data: {},
       };
       const result = await acceptFriendRequest(options);
+      console.log(result);
       if (result?.data?.success) {
+        refetch();
         toast.show("Request accepted successfully", { type: "success" });
       } else {
         toast.show("Request accepted unsuccessfully", { type: "danger" });
       }
     }
-    setVisible(null);
     setIsAcceptLoading(false);
   };
 
@@ -89,7 +88,6 @@ const FriendListItem = ({ item = {} }) => {
   return (
     <>
       <TouchableRipple
-        onPress={() => goto()}
         rippleColor="rgba(255, 255, 255, 0.09)"
         className="h-[72px] w-full border-[1px] border-[#FFFFFF29] rounded-[20px] mt-[16px]"
         style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
@@ -127,17 +125,18 @@ const FriendListItem = ({ item = {} }) => {
               </Text>
 
               <View className="flex-row items-center gap-x-[8px]">
-                {item?.requester === user?._id && (
-                  <TouchableRipple
-                    disabled={isCancelLoading}
-                    onPress={() => handleCancelRequest()}
-                    className="bg-red-500 w-[70px] h-[22px] rounded-[32px] justify-center items-center"
-                  >
-                    <Text className="text-white font-Poppins-Regular text-[12px]">
-                      Cancel
-                    </Text>
-                  </TouchableRipple>
-                )}
+                {item?.requester === user?._id &&
+                  item?.status === FRIEND_STATUS.REQUEST_SENT && (
+                    <TouchableRipple
+                      disabled={isCancelLoading}
+                      onPress={() => handleCancelRequest()}
+                      className="bg-red-500 w-[70px] h-[22px] rounded-[32px] justify-center items-center"
+                    >
+                      <Text className="text-white font-Poppins-Regular text-[12px]">
+                        Cancel
+                      </Text>
+                    </TouchableRipple>
+                  )}
 
                 {item?.requester !== user?._id &&
                   item?.status === FRIEND_STATUS.REQUEST_SENT && (
@@ -145,7 +144,7 @@ const FriendListItem = ({ item = {} }) => {
                       <TouchableRipple
                         disabled={isRejectLoading}
                         onPress={() => handleRejectRequest()}
-                        className="bg-red-500 w-[70px] h-[22px] rounded-[32px] justify-center items-center"
+                        className="bg-red-500 w-[70px] h-[22px] rounded-[32px] justify-center items-center mr-[8px]"
                       >
                         <Text className="text-white font-Poppins-Regular text-[12px]">
                           Rejected
@@ -167,13 +166,6 @@ const FriendListItem = ({ item = {} }) => {
           </View>
         </View>
       </TouchableRipple>
-
-      <FriendConnectionPopup
-        visible={!!visible}
-        setVisible={() => setVisible(null)}
-        data={visible?.data}
-        friendData={visible?.friendData}
-      />
     </>
   );
 };
