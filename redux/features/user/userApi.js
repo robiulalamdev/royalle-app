@@ -1,5 +1,5 @@
 import { api } from "../../api/api";
-import { setFeeds, setUser } from "./userSlice";
+import { setBestMatches, setFeeds, setUser } from "./userSlice";
 
 const usersApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -22,6 +22,18 @@ const usersApi = api.injectEndpoints({
         const result = await queryFulfilled;
         if (result?.data?.data) {
           dispatch(setFeeds(result?.data?.data));
+        }
+      },
+      providesTags: ["users"],
+    }),
+
+    myBestMatches: builder.query({
+      query: () => "/users/best-matches",
+
+      async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
+        const result = await queryFulfilled;
+        if (result?.data?.data) {
+          dispatch(setBestMatches(result?.data?.data));
         }
       },
       providesTags: ["users"],
@@ -77,6 +89,7 @@ const usersApi = api.injectEndpoints({
 export const {
   useMyInfoQuery,
   useMyFeedsQuery,
+  useMyBestMatchesQuery,
   usePostLoginMutation,
   useCreateUserMutation,
   useCheckEmailExistMutation,

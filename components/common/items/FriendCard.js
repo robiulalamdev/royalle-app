@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
   // console.log(className);
@@ -8,6 +9,10 @@ export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
       <Image
         source={{ uri: item?.user?.image }}
         className="max-h-[380px] w-full rounded-[15px] h-full"
+      />
+      <LinearGradient
+        colors={["transparent", "rgba(0, 0, 0, 0.4)", "rgba(0, 0, 0, 0.8)"]}
+        className="min-h-[92px] max-h-[50%] h-full w-full rounded-[15px] absolute bottom-0 right-0 left-0"
       />
       <View className="absolute bottom-0 right-0 left-0 w-full px-[8px] pb-[8px]">
         <View className="flex-row items-center gap-x-[12px] w-full">
@@ -58,7 +63,7 @@ export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
                 className="text-white font-normal leading-[20px] text-[12px]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.distance?.miles} Miles of you
+                {parseInt(item?.distance?.miles)} Miles of you
                 {/* 2 Miles of you */}
               </Text>
             </View>

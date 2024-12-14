@@ -6,29 +6,33 @@ import { wp } from "../../helpers/common";
 import CarouselSingleItem from "./CarouselSingleItem";
 import { useRouter } from "expo-router";
 
-export default function HomeCarousel() {
+export default function HomeCarousel({ items = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
   const router = useRouter();
 
   const handleNextItem = () => {
-    const newIndex = (activeIndex + 1) % homeItems.length;
+    const newIndex = (activeIndex + 1) % items.length;
     carouselRef.current.snapToItem(newIndex);
     setActiveIndex(newIndex);
   };
 
   const handlePrevItem = () => {
-    const newIndex = (activeIndex - 1 + homeItems.length) % homeItems.length;
+    const newIndex = (activeIndex - 1 + items.length) % items.length;
     carouselRef.current.snapToItem(newIndex);
     setActiveIndex(newIndex);
   };
+
+  // console.log(items);
   return (
     <>
       <View className="mt-[16px]">
         <Carousel
           ref={carouselRef}
-          data={homeItems}
-          renderItem={CarouselSingleItem}
+          data={items}
+          renderItem={({ item, index }) => {
+            return <CarouselSingleItem item={item} index={index} />;
+          }}
           sliderWidth={wp(90)}
           itemWidth={wp(90)}
           onSnapToItem={(index) => setActiveIndex(index)}

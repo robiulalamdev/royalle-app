@@ -17,21 +17,28 @@ import HomeCarousel from "../../components/home/HomeCarousel";
 import FriendCard from "../../components/common/items/FriendCard";
 import { homeItems } from "../../constants/data";
 import { useSelector } from "react-redux";
-import { useMyFeedsQuery } from "../../redux/features/user/userApi";
+import {
+  useMyBestMatchesQuery,
+  useMyFeedsQuery,
+} from "../../redux/features/user/userApi";
 
 const WelcomePage = () => {
   const { refetch } = useMyFeedsQuery();
-  const { feeds = [] } = useSelector((state) => state.user);
+  const { refetch: bestMatchRefetch } = useMyBestMatchesQuery();
+  const { feeds = [], bestMatches = [] } = useSelector((state) => state.user);
   const [refreshing, setRefreshing] = useState(false);
 
   // Function to handle refresh
   const onRefresh = () => {
     setRefreshing(true);
+    bestMatchRefetch();
     refetch();
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
   };
+
+  // console.log(bestMatches);
 
   return (
     <>
@@ -45,7 +52,7 @@ const WelcomePage = () => {
           <View className="px-[20px]">
             <Header />
 
-            <HomeCarousel />
+            <HomeCarousel items={bestMatches} />
             <View className="">
               {feeds?.map((item, index) => (
                 <FriendCard key={index} item={item} className="mt-[20px]" />
