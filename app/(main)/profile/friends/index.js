@@ -13,8 +13,20 @@ import { Pressable } from "react-native";
 import { Button } from "react-native-paper";
 import { Assets } from "../../../../lib/assets";
 import FriendListItem from "../../../../components/common/items/FriendListItem";
+import {
+  useFriendRequestQuery,
+  useMyFriendsQuery,
+} from "../../../../redux/features/friend/friendApi";
 
 const MyFriends = () => {
+  const { data, refetch: refetchFriends } = useMyFriendsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
+  const { data: requestData, refetch: refetchFriendRequest } =
+    useFriendRequestQuery(undefined, {
+      refetchOnMountOrArgChange: true,
+    });
+
   const router = useRouter();
   const [selectedTab, setSelectedTab] = useState("Requests");
 
@@ -23,6 +35,11 @@ const MyFriends = () => {
   // Function to handle refresh
   const onRefresh = () => {
     setRefreshing(true);
+    if (selectedTab === "Requests") {
+      refetchFriendRequest();
+    } else {
+      refetchFriends();
+    }
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
@@ -72,28 +89,21 @@ const MyFriends = () => {
             Friends
           </Button>
         </View>
-        <View>
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-          <FriendListItem />
-        </View>
+
+        {selectedTab === "Requests" && (
+          <>
+            {requestData?.data?.map((item, index) => (
+              <FriendListItem key={index} item={item} />
+            ))}
+          </>
+        )}
+        {selectedTab === "Friends" && (
+          <>
+            {data?.data?.map((item, index) => (
+              <FriendListItem key={index} item={item} />
+            ))}
+          </>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
