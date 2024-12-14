@@ -7,11 +7,13 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import ProfileImage from "../../common/auth/ProfileImage";
 
-export default function SingleChat({ data = null, handleChat }) {
+export default function SingleChat({ data = {}, handleChat }) {
   const handleSelectChat = (chat) => {
     handleChat(chat);
   };
+
   return (
     <Pressable
       onPress={() => handleSelectChat(data)}
@@ -19,8 +21,8 @@ export default function SingleChat({ data = null, handleChat }) {
       style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
     >
       <View className="flex-row items-center gap-x-[8px] relative w-full h-full px-[12px]">
-        <Image
-          source={data?.user?.image}
+        <ProfileImage
+          url={data?.receiverInfo?.image}
           className="w-[48px] h-[48px] rounded-full"
           resizeMode="cover"
         />
@@ -32,7 +34,7 @@ export default function SingleChat({ data = null, handleChat }) {
               className="font-poppins text-[14px] font-medium leading-[20px] text-white max-w-[220px]"
               style={{ fontFamily: "Poppins-Regular" }}
             >
-              {data?.user?.name}
+              {data?.receiverInfo?.name}
             </Text>
             <Text
               className="font-poppins text-[10px] font-normal leading-[24px] text-[#FFFFFF99] text-right "

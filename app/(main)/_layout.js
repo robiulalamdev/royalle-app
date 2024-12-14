@@ -51,36 +51,6 @@ export default function AppLayout() {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="profile/update-profile"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="profile/preference"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="profile/friends"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="profile/friends/[id]"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="profile/notifications"
-          options={{
-            headerShown: false,
-          }}
-        />
       </Stack>
     </PrivateRoute>
   );

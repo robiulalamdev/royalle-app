@@ -4,22 +4,32 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import SingleChat from "../../../components/message/chats/SingleChat";
-import { chats } from "../../../constants/data";
+// import { chats } from "../../../constants/data";
 import BottomTab from "../../../components/shared/BottomTab";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useMyChatsQuery } from "../../../redux/features/conversations/conversationApi";
+import { setChat } from "../../../redux/features/conversations/conversationSlice";
+import ProfileImage from "../../../components/common/auth/ProfileImage";
 
 export default function MessageScreen() {
   const { user } = useSelector((state) => state.user);
+  useMyChatsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
+  const { chats = [] } = useSelector((state) => state.conversation);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleChat = (selectChat) => {
-    router.push(`message/${selectChat?.id}`);
+    dispatch(setChat(selectChat));
+    router.push(`message/${selectChat?._id}`);
   };
   return (
     <SafeAreaView className="bg-screenbg h-full w-full px-[12px]">
@@ -34,18 +44,13 @@ export default function MessageScreen() {
           </Text>
         </View>
 
-        {user && user?.image ? (
-          <Image
-            source={{ uri: user?.image }}
+        <TouchableOpacity onPress={() => router.push("profile")}>
+          <ProfileImage
+            url={user?.image}
             resizeMode="cover"
             className="w-[40px] h-[40px] rounded-full"
           />
-        ) : (
-          <Image
-            source={require("../../../assets/images/message/chat/profile1.png")}
-            className="w-[40px] h-[40px] rounded-full"
-          />
-        )}
+        </TouchableOpacity>
       </View>
 
       <ScrollView

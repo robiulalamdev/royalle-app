@@ -1,13 +1,15 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import ProfileImage from "../../common/auth/ProfileImage";
+import { useSelector } from "react-redux";
 
 export default function SingleMessage({ data = null, chat = null }) {
+  const { user } = useSelector((state) => state.user);
   return (
     <View className="w-full">
-      {data?.user?.id === 1 ? (
+      {data?.senderId !== user?._id ? (
         <View className="flex-row items-end gap-x-[12px] mt-[24px]">
-          <Image
-            source={chat?.user?.image}
+          <ProfileImage
+            url={chat?.receiverInfo?.image}
             className="w-[40px] h-[40px] rounded-full"
             resizeMode="cover"
           />

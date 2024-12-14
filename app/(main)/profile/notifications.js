@@ -12,41 +12,48 @@ import { Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import NotificationCard from "../../../components/common/items/NotificationCard";
+import { useMyNotificationsQuery } from "../../../redux/features/notifications/notificationApi";
+import { useSelector } from "react-redux";
 
-const notifications = [
-  {
-    type: "friend_request",
-    user: { name: "Nahid Murad Abir" },
-    title: "Friend Request",
-    message: "sent you a friend request.",
-  },
-  {
-    type: "new_message",
-    user: { name: "Nahid Murad Abir" },
-    title: "New Message",
-    message: "sent you a new message.",
-  },
-  {
-    type: "favorited",
-    user: { name: "Nahid Murad Abir" },
-    title: "Favorited",
-    message: "added you to their favorites.",
-  },
-  {
-    type: "profile_viewed",
-    user: { name: "Nahid Murad Abir" },
-    title: "Profile Viewed",
-    message: "viewed your profile.",
-  },
-];
+// const notifications = [
+//   {
+//     type: "friend_request",
+//     user: { name: "Nahid Murad Abir" },
+//     title: "Friend Request",
+//     message: "sent you a friend request.",
+//   },
+//   {
+//     type: "new_message",
+//     user: { name: "Nahid Murad Abir" },
+//     title: "New Message",
+//     message: "sent you a new message.",
+//   },
+//   {
+//     type: "favorited",
+//     user: { name: "Nahid Murad Abir" },
+//     title: "Favorited",
+//     message: "added you to their favorites.",
+//   },
+//   {
+//     type: "profile_viewed",
+//     user: { name: "Nahid Murad Abir" },
+//     title: "Profile Viewed",
+//     message: "viewed your profile.",
+//   },
+// ];
 
 const Notifications = () => {
+  const { notifications } = useSelector((state) => state.notification);
+  const { refetch } = useMyNotificationsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
   const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
 
   // Function to handle refresh
   const onRefresh = () => {
     setRefreshing(true);
+    refetch();
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);

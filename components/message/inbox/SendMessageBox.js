@@ -16,12 +16,7 @@ export default function SendMessageBox({ handleSendMessage }) {
   const [messageInput, setMessageInput] = useState("");
 
   const handleSubmit = async () => {
-    await handleSendMessage({
-      id: 12,
-      message: messageInput,
-      user: { id: 2 },
-    });
-
+    await handleSendMessage(messageInput);
     setMessageInput("");
   };
   return (

@@ -4,30 +4,52 @@ import { TouchableRipple } from "react-native-paper";
 import ProfileImage from "../auth/ProfileImage";
 import { useRouter } from "expo-router";
 import { SCREEN_WIDTH } from "../../../helpers/common";
+import { NOTIFICATION_TYPES } from "../../../constants/data";
 
 const NotificationCard = ({ data = {} }) => {
   const router = useRouter();
 
-  const handleNotification = async (data = {}) => {
-    console.log("click");
+  const handleNotification = async () => {
+    if (data) {
+      if (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST) {
+        router.push("profile/friends");
+      }
+      if (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST_ACCEPT) {
+        router.push("profile/friends");
+      }
+      if (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST_REJECT) {
+        router.push("profile/friends");
+      }
+    }
   };
   return (
     <>
       <TouchableRipple
-        onPress={() => handleNotification(data)}
+        onPress={() => handleNotification()}
         rippleColor="rgba(255, 255, 255, 0.09)"
-        className={`min-h-[70px] max-h-[100px] w-full border-[1px] border-[#FFFFFF29] rounded-[20px] mt-[10px]
+        className={`min-h-[70px] max-h-[90px] w-full border-[1px] border-[#FFFFFF29] rounded-[20px] mt-[10px]
             ${
-              (data?.type === "friend_request" && "border-[#00ff0075]") ||
-              (data?.type === "new_message" && "border-primary/50") ||
-              (data?.type === "profile_viewed" && "border-purple-600/50") ||
-              (data?.type === "favorited" && "border-yellow-600/50")
+              (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST &&
+                "border-[#00ff0075]") ||
+              (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST_ACCEPT &&
+                "border-primary/50") ||
+              (data?.type === NOTIFICATION_TYPES.PROFILE_VIEW &&
+                "border-purple-600/50") ||
+              (data?.type === NOTIFICATION_TYPES.FAVORITE &&
+                "border-yellow-600/50") ||
+              (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST_REJECT &&
+                "border-red-600/50")
             }
             `}
-        style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.04)",
+        }}
       >
         <View className="flex-row gap-x-[12px] relative w-full h-full px-[12px] py-[12px]">
-          <ProfileImage className="w-[48px] h-[48px] rounded-full" />
+          <ProfileImage
+            url={data?.from?.image}
+            className="w-[48px] h-[48px] rounded-full"
+          />
           <View className="w-full max-w-[285px]">
             <View className="flex-row w-full justify-between items-center">
               <Text
@@ -39,7 +61,7 @@ const NotificationCard = ({ data = {} }) => {
                   width: SCREEN_WIDTH - 120,
                 }}
               >
-                <Text className="font-Inter-Bold">{data?.user?.name}</Text>{" "}
+                <Text className="font-Inter-Bold">{data?.from?.name}</Text>{" "}
                 {data?.message}
               </Text>
             </View>

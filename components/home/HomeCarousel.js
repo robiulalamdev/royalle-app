@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useRef, useState } from "react";
 import Carousel from "react-native-snap-carousel";
-import { homeItems } from "../../constants/data";
+import { FRIEND_STATUS, homeItems } from "../../constants/data";
 import { wp } from "../../helpers/common";
 import CarouselSingleItem from "./CarouselSingleItem";
 import { useRouter } from "expo-router";
@@ -44,7 +44,13 @@ export default function HomeCarousel({ items = [] }) {
       };
       const result = await checkStatus(options);
       if (result?.data?.success) {
-        console.log(result);
+        if (
+          result?.data?.data?.status === FRIEND_STATUS.ACCEPTED &&
+          result?.data?.chat?._id
+        ) {
+          router.push(`message/${result?.data?.chat?._id}`);
+          return;
+        }
         setVisible({ data: result?.data?.data, friendData: findedItem?.user });
       }
     }

@@ -202,3 +202,11 @@ export const FRIEND_STATUS = {
   ACCEPTED: "Accepted",
   REJECTED: "Rejected",
 };
+
+export const NOTIFICATION_TYPES = {
+  FRIEND_REQUEST: "Friend request",
+  FRIEND_REQUEST_ACCEPT: "Friend request accept",
+  FRIEND_REQUEST_REJECT: "Friend request reject",
+  FAVORITE: "Favorite",
+  PROFILE_VIEW: "Profile view",
+};
