@@ -1,15 +1,21 @@
-import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useRef, useState } from "react";
 import Carousel from "react-native-snap-carousel";
 import { homeItems } from "../../constants/data";
 import { wp } from "../../helpers/common";
 import CarouselSingleItem from "./CarouselSingleItem";
 import { useRouter } from "expo-router";
+import FriendCard from "../common/items/FriendCard";
+import { Button, Dialog, Portal } from "react-native-paper";
+import FriendConnectionPopup from "../common/dialogs/FriendRequestPopup";
+import { useCheckStatusMutation } from "../../redux/features/friend/friendApi";
 
 export default function HomeCarousel({ items = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
   const router = useRouter();
+
+  const [checkStatus] = useCheckStatusMutation();
 
   const handleNextItem = () => {
     const newIndex = (activeIndex + 1) % items.length;
@@ -24,14 +30,35 @@ export default function HomeCarousel({ items = [] }) {
   };
 
   // console.log(items);
+
+  const [visible, setVisible] = useState(null);
+
+  const handleFinish = async () => {};
+
+  const handleOpen = async () => {
+    const findedItem = await items[activeIndex];
+    if (findedItem) {
+      const options = {
+        id: findedItem?.user?._id,
+        data: {},
+      };
+      const result = await checkStatus(options);
+      if (result?.data?.success) {
+        console.log(result);
+        setVisible({ data: result?.data?.data, friendData: findedItem?.user });
+      }
+    }
+    // console.log(findedItem);
+  };
+
   return (
     <>
-      <View className="mt-[16px]">
+      <View className="mt-[5px]">
         <Carousel
           ref={carouselRef}
           data={items}
           renderItem={({ item, index }) => {
-            return <CarouselSingleItem item={item} index={index} />;
+            return <FriendCard item={item} index={index} />;
           }}
           sliderWidth={wp(90)}
           itemWidth={wp(90)}
@@ -59,7 +86,7 @@ export default function HomeCarousel({ items = [] }) {
             className="w-[48px] h-[48px]"
           />
         </Pressable>
-        <Pressable>
+        <Pressable onPress={() => handleOpen()}>
           <Image
             source={require("../../assets/icons/home/message.png")}
             className="w-[48px] h-[48px]"
@@ -72,6 +99,14 @@ export default function HomeCarousel({ items = [] }) {
           />
         </Pressable>
       </View>
+
+      <FriendConnectionPopup
+        visible={!!visible}
+        setVisible={() => setVisible(null)}
+        data={visible?.data}
+        friendData={visible?.friendData}
+        handleFinish={() => handleFinish()}
+      />
     </>
   );
 }
