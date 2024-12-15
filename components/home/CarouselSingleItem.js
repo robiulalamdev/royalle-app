@@ -1,20 +1,25 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function CarouselSingleItem({ item, index }) {
+export default function CarouselSingleItem({ item = {}, className = "" }) {
   return (
-    <View key={index} className="relative max-h-[380px] w-full">
+    <View className={`relative max-h-[380px] w-full ${className}`}>
       <Image
-        source={item?.image}
+        source={{ uri: item?.user?.image }}
         className="max-h-[380px] w-full rounded-[15px] h-full"
+      />
+      <LinearGradient
+        colors={["transparent", "rgba(0, 0, 0, 0.4)", "rgba(0, 0, 0, 0.8)"]}
+        className="min-h-[92px] max-h-[50%] h-full w-full rounded-[15px] absolute bottom-0 right-0 left-0"
       />
       <View className="absolute bottom-0 right-0 left-0 w-full px-[8px] pb-[8px]">
         <View className="flex-row items-center gap-x-[12px] w-full">
           <Text
             className="text-white font-semibold leading-[30px] text-[22px]"
-            style={{ fontFamily: "PoppinsRegular" }}
+            style={{ fontFamily: "Poppins-Regular" }}
           >
-            {item?.name}
+            {item?.user?.name}
           </Text>
           <Image
             source={require("../../assets/icons/home/info.png")}
@@ -24,16 +29,18 @@ export default function CarouselSingleItem({ item, index }) {
           />
         </View>
         <View
-          className="min-h-[92px] w-full rounded-[12px] mt-[8px]"
+          className="min-h-[92px] w-full rounded-[12px] pb-[12px] mt-[8px]"
           style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
         >
           <View className="px-[8px] pt-[8px] pb-[12px] flex-row justify-between items-start gap-[12px]">
             <View className="max-w-[80%]">
               <Text
+                numberOfLines={4}
+                ellipsizeMode="tail"
                 className="text-white/90 font-normal leading-[18px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.about}
+                {item?.user?.bio}
               </Text>
             </View>
             <Image
@@ -53,25 +60,26 @@ export default function CarouselSingleItem({ item, index }) {
               />
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
-                2 Miles of you
+                {parseInt(item?.distance?.miles)} Miles of you
+                {/* 2 Miles of you */}
               </Text>
             </View>
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.country}
+                {item?.user?.location?.country}
               </Text>
             </View>
             <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
               <Text
                 className="text-white font-normal leading-[20px] text-[12px]"
-                style={{ fontFamily: "PoppinsRegular" }}
+                style={{ fontFamily: "Poppins-Regular" }}
               >
-                {item?.age} {item?.age > 1 ? "years" : "year"}
+                {item?.user?.age} {item?.user?.age > 1 ? "years" : "year"}
               </Text>
             </View>
           </View>

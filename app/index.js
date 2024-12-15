@@ -1,21 +1,16 @@
-import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 import { initialItems } from "../constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
 
 export default function WelcomeScreen() {
-  const { user } = useSelector((state) => state.nonPersisted.user);
-
   const handleItem = async () => {
     router.push("(main)");
   };
 
-  // console.log(user);
   return (
     <SafeAreaView className="bg-black px-[3px] py-[10px] flex-1 w-full h-full">
-      {/* <Button title="Login" onPress={() => router.push("login")} /> */}
       <View className="flex-row flex-wrap cursor-pointer">
         {initialItems.map((item, index) => (
           <Pressable
@@ -41,7 +36,7 @@ export default function WelcomeScreen() {
                 <View className="flex-row items-center gap-x-[12px] w-full">
                   <Text
                     className="text-white font-semibold leading-[30px] text-[14px]"
-                    style={{ fontFamily: "PoppinsRegular" }}
+                    style={{ fontFamily: "Poppins-Regular" }}
                   >
                     {item?.name}
                   </Text>
@@ -60,7 +55,7 @@ export default function WelcomeScreen() {
                     <View className="max-w-[80%]">
                       <Text
                         className="text-white/90 font-normal leading-[18px] text-[12px]"
-                        style={{ fontFamily: "PoppinsRegular" }}
+                        style={{ fontFamily: "Poppins-Regular" }}
                       >
                         {item?.about.slice(0, 30)}
                       </Text>

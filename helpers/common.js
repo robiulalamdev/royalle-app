@@ -14,3 +14,6 @@ export const getMessagesByChatId = async (chatId) => {
   const result = await chats.find((chat) => chat.id === parseInt(chatId));
   return result;
 };
+
+export const SCREEN_WIDTH = Dimensions.get("window").width;
+export const SCREEN_HEIGHT = Dimensions.get("window").height;

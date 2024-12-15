@@ -7,30 +7,58 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import InboxHeader from "../../../components/message/inbox/InboxHeader";
 import SendMessageBox from "../../../components/message/inbox/SendMessageBox";
 import SingleMessage from "../../../components/message/inbox/SingleMessage";
+import {
+  useGetMessageByChatIdQuery,
+  useSendMessageMutation,
+} from "../../../redux/features/conversations/conversationApi";
+import { useSelector } from "react-redux";
 
 export default function InboxScreen() {
+  const { user } = useSelector((state) => state.user);
+  const { chat = {} } = useSelector((state) => state.conversation);
   const { chatId } = useLocalSearchParams();
-  const [chat, setChat] = useState(null);
+  const { data = [] } = useGetMessageByChatIdQuery(chatId, {
+    refetchOnMountOrArgChange: true,
+  });
+  const [sendMessage] = useSendMessageMutation();
   const [messages, setMessages] = useState([]);
   const scrollViewRef = useRef(null);
 
-  const handleGetMessages = async () => {
-    const result = await getMessagesByChatId(chatId);
-    setChat(result);
-    setMessages(inboxMessages);
-  };
-
   useEffect(() => {
-    if (chatId) {
-      handleGetMessages();
+    if (data?.data) {
+      setMessages(data.data);
     }
-  }, [chatId]);
+  }, [data]);
 
-  const handleSendMessage = (messageData) => {
-    setMessages((prevMessages) => {
-      const newMessages = [...prevMessages, messageData];
-      return newMessages;
-    });
+  const handleSendMessage = async (messageData) => {
+    if (messageData) {
+      const options = {
+        data: {
+          chatId: chatId,
+          message: messageData,
+          senderId: user?._id,
+          members: chat?.members,
+        },
+      };
+
+      const result = await sendMessage(options);
+      console.log(result?.data);
+      if (result?.data?.success) {
+        setMessages((prevMessages) => {
+          const newMessages = [
+            ...prevMessages,
+            {
+              chatId: chatId,
+              message: messageData,
+              senderId: user?._id,
+              members: chat?.members,
+              isSeen: false,
+            },
+          ];
+          return newMessages;
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -39,6 +67,8 @@ export default function InboxScreen() {
       scrollViewRef.current.scrollToEnd({ animated: true });
     }
   }, [messages]);
+
+  // console.log(messages);
 
   return (
     <SafeAreaView className="bg-screenbg " style={styles.container}>

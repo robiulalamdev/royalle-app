@@ -16,12 +16,7 @@ export default function SendMessageBox({ handleSendMessage }) {
   const [messageInput, setMessageInput] = useState("");
 
   const handleSubmit = async () => {
-    await handleSendMessage({
-      id: 12,
-      message: messageInput,
-      user: { id: 2 },
-    });
-
+    await handleSendMessage(messageInput);
     setMessageInput("");
   };
   return (
@@ -47,7 +42,7 @@ export default function SendMessageBox({ handleSendMessage }) {
           placeholder="Write your message"
           className="flex-grow text-white text-[13px] placeholder:!text-white ml-[12px] mr-0 p-0 max-w-[55%]"
           placeholderTextColor="white"
-          style={{ fontFamily: "PoppinsMedium" }}
+          style={{ fontFamily: "Poppins-Medium" }}
         />
       </View>
       <View className="w-[64px] flex-row justify-end">

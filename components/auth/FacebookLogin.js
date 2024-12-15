@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import app from "../../config/firebaseConfig";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/user/userSlice";
+import { setUser } from "../../redux/features/user/userSlice";
 import { router } from "expo-router";
 
 const FacebookLogin = () => {

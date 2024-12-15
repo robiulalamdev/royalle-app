@@ -6,14 +6,21 @@ import LikesInput from "./Microfilters/LikesInput";
 import LookingInput from "./Microfilters/LookingInput";
 import PreferencesInput from "./Microfilters/PreferencesInput";
 
-export default function Microfilters() {
-  const [open, setOpen] = useState(false);
-  const [eyeColor, setEyeColor] = useState("#A37042");
-  const [hairColor, setHairColor] = useState("#222222");
-  const [likes, setLikes] = useState("Workout");
-  const [looking, setLooking] = useState("Long term");
-  const [preferences, setPreferences] = useState(["Drinking"]);
-
+export default function Microfilters({
+  open,
+  setOpen,
+  eyeColor,
+  setEyeColor,
+  hairColor,
+  setHairColor,
+  likes,
+  setLikes,
+  looking,
+  setLooking,
+  preferences,
+  setPreferences,
+  showArrow = true,
+}) {
   const handleSelect = (input) => {
     const itemIndex = preferences.findIndex((sItem) => sItem === input);
     if (itemIndex !== -1) {
@@ -32,7 +39,7 @@ export default function Microfilters() {
         <Text className="text-white text-[18px] font-semibold leading-[28px]">
           Set Microfilters
         </Text>
-        {open ? (
+        {open && showArrow ? (
           <Pressable
             onPress={() => setOpen(false)}
             className="w-[32px] h-[32px] flex-row justify-center items-center"

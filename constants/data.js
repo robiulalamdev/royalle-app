@@ -196,3 +196,17 @@ export const initialItems = [
       "An experienced project manager with expertise in agile methodologies",
   },
 ];
+
+export const FRIEND_STATUS = {
+  REQUEST_SENT: "Request Sent",
+  ACCEPTED: "Accepted",
+  REJECTED: "Rejected",
+};
+
+export const NOTIFICATION_TYPES = {
+  FRIEND_REQUEST: "Friend request",
+  FRIEND_REQUEST_ACCEPT: "Friend request accept",
+  FRIEND_REQUEST_REJECT: "Friend request reject",
+  FAVORITE: "Favorite",
+  PROFILE_VIEW: "Profile view",
+};
