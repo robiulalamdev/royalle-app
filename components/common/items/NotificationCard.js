@@ -5,6 +5,7 @@ import ProfileImage from "../auth/ProfileImage";
 import { useRouter } from "expo-router";
 import { SCREEN_WIDTH } from "../../../helpers/common";
 import { NOTIFICATION_TYPES } from "../../../constants/data";
+import moment from "moment";
 
 const NotificationCard = ({ data = {} }) => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const NotificationCard = ({ data = {} }) => {
       <TouchableRipple
         onPress={() => handleNotification()}
         rippleColor="rgba(255, 255, 255, 0.09)"
-        className={`min-h-[70px] max-h-[90px] w-full border-[1px] border-[#FFFFFF29] rounded-[20px] mt-[10px]
+        className={`min-h-[70px] max-h-[110px] w-full border-[1px] border-[#FFFFFF29] rounded-[20px] mt-[10px]
             ${
               (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST &&
                 "border-[#00ff0075]") ||
@@ -45,6 +46,7 @@ const NotificationCard = ({ data = {} }) => {
             `}
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.04)",
+          alignSelf: "flex-start",
         }}
       >
         <View className="flex-row gap-x-[12px] relative w-full h-full px-[12px] py-[12px]">
@@ -55,7 +57,7 @@ const NotificationCard = ({ data = {} }) => {
           <View className="w-full max-w-[285px]">
             <View className="flex-row w-full justify-between items-center">
               <Text
-                numberOfLines={2}
+                numberOfLines={3}
                 ellipsizeMode="tail"
                 className="font-poppins text-[14px] font-medium leading-[20px] text-white"
                 style={{
@@ -74,7 +76,7 @@ const NotificationCard = ({ data = {} }) => {
                 className="font-poppins text-[10px] font-normal leading-[24px] text-[#FFFFFF99]"
                 style={{ fontFamily: "Poppins-Regular" }}
               >
-                10/465/546
+                {moment(data?.createdAt).fromNow()}
               </Text>
             </View>
           </View>

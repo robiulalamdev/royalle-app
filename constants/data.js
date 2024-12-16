@@ -210,4 +210,5 @@ export const NOTIFICATION_TYPES = {
   FAVORITE: "Favorite",
   PROFILE_VIEW: "Profile view",
   MATCHES: "Matches",
+  MESSAGE: "Message",
 };
