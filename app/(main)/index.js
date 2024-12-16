@@ -52,7 +52,10 @@ const WelcomePage = () => {
           <View className="px-[20px]">
             <Header />
 
-            <HomeCarousel items={bestMatches} />
+            <HomeCarousel
+              items={bestMatches}
+              refetch={() => bestMatchRefetch()}
+            />
             <View className="">
               {feeds?.map((item, index) => (
                 <FriendCard key={index} item={item} className="mt-[20px]" />

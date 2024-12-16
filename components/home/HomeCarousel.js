@@ -9,8 +9,15 @@ import FriendCard from "../common/items/FriendCard";
 import { Button, Dialog, Portal } from "react-native-paper";
 import FriendConnectionPopup from "../common/dialogs/FriendRequestPopup";
 import { useCheckStatusMutation } from "../../redux/features/friend/friendApi";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withTiming,
+  cancelAnimation,
+} from "react-native-reanimated";
 
-export default function HomeCarousel({ items = [] }) {
+export default function HomeCarousel({ items = [], refetch }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
   const router = useRouter();
@@ -57,6 +64,31 @@ export default function HomeCarousel({ items = [] }) {
     // console.log(findedItem);
   };
 
+  const rotation = useSharedValue(0);
+
+  const handleRefetch = () => {
+    refetch();
+
+    // Start rotation animation
+    rotation.value = withRepeat(
+      withTiming(-360, { duration: 1000 }),
+      -1,
+      false
+    );
+
+    setTimeout(() => {
+      cancelAnimation(rotation);
+      rotation.value = 0;
+    }, 1000);
+  };
+
+  // Animated style for spinning effect
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: `${rotation.value}deg` }],
+    };
+  });
+
   return (
     <>
       <View className="mt-[5px]">
@@ -80,10 +112,11 @@ export default function HomeCarousel({ items = [] }) {
             className="w-[40px] h-[40px]"
           />
         </Pressable>
-        <Pressable>
-          <Image
+        <Pressable onPress={() => handleRefetch()}>
+          <Animated.Image
             source={require("../../assets/icons/home/reload.png")}
             className="w-[48px] h-[48px]"
+            style={[animatedStyle]}
           />
         </Pressable>
         <Pressable>

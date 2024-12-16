@@ -209,4 +209,5 @@ export const NOTIFICATION_TYPES = {
   FRIEND_REQUEST_REJECT: "Friend request reject",
   FAVORITE: "Favorite",
   PROFILE_VIEW: "Profile view",
+  MATCHES: "Matches",
 };
