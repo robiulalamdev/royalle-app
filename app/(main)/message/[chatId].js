@@ -10,6 +10,7 @@ import SingleMessage from "../../../components/message/inbox/SingleMessage";
 import {
   useGetMessageByChatIdQuery,
   useSendMessageMutation,
+  useUnseenToSeenMutation,
 } from "../../../redux/features/conversations/conversationApi";
 import { useSelector } from "react-redux";
 
@@ -21,12 +22,23 @@ export default function InboxScreen() {
     refetchOnMountOrArgChange: true,
   });
   const [sendMessage] = useSendMessageMutation();
+  const [unseenToSeen] = useUnseenToSeenMutation();
   const [messages, setMessages] = useState([]);
   const scrollViewRef = useRef(null);
+
+  const handleSeenMessage = async () => {
+    const options = {
+      chatId: chatId,
+      data: {},
+    };
+    await unseenToSeen(options);
+    // console.log(result);
+  };
 
   useEffect(() => {
     if (data?.data) {
       setMessages(data.data);
+      handleSeenMessage();
     }
   }, [data]);
 
@@ -42,7 +54,6 @@ export default function InboxScreen() {
       };
 
       const result = await sendMessage(options);
-      console.log(result?.data);
       if (result?.data?.success) {
         setMessages((prevMessages) => {
           const newMessages = [

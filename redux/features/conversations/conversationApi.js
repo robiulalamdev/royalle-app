@@ -42,6 +42,14 @@ const conversationApi = api.injectEndpoints({
       },
     }),
 
+    unseenToSeen: builder.mutation({
+      query: ({ data = {}, chatId }) => ({
+        url: `/messages/unseen-to-seen/${chatId}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+
     getMessageByChatId: builder.query({
       query: (chatId) => `/messages/${chatId}`,
       providesTags: ["messages"],
@@ -54,6 +62,9 @@ export const {
   useSendMessageMutation,
   useMyChatsQuery,
   useGetMessageByChatIdQuery,
+
+  // Patch
+  useUnseenToSeenMutation,
 
   // DELETE
   useRemoveChatByIdMutation,

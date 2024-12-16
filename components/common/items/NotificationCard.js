@@ -41,7 +41,9 @@ const NotificationCard = ({ data = {} }) => {
               (data?.type === NOTIFICATION_TYPES.FRIEND_REQUEST_REJECT &&
                 "border-red-600/50") ||
               (data?.type === NOTIFICATION_TYPES.MATCHES &&
-                "border-blue-600/50")
+                "border-blue-600/50") ||
+              (data?.type === NOTIFICATION_TYPES.MESSAGE &&
+                "border-orange-600/50")
             }
             `}
         style={{
