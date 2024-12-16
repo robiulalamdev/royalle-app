@@ -54,6 +54,11 @@ const conversationApi = api.injectEndpoints({
       query: (chatId) => `/messages/${chatId}`,
       providesTags: ["messages"],
     }),
+
+    getChatById: builder.query({
+      query: (chatId = "") => `/chats/${chatId}`,
+      providesTags: ["messages", "chats"],
+    }),
   }),
 });
 
@@ -62,6 +67,9 @@ export const {
   useSendMessageMutation,
   useMyChatsQuery,
   useGetMessageByChatIdQuery,
+
+  // get
+  useGetChatByIdQuery,
 
   // Patch
   useUnseenToSeenMutation,

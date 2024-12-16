@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import ProfileImage from "../../common/auth/ProfileImage";
+import moment from "moment";
 
 export default function SingleChat({ data = {}, handleChat }) {
   const handleSelectChat = (chat) => {
@@ -40,10 +41,10 @@ export default function SingleChat({ data = {}, handleChat }) {
               className="font-poppins text-[10px] font-normal leading-[24px] text-[#FFFFFF99] text-right "
               style={{ fontFamily: "Poppins-Regular" }}
             >
-              {data?.lastMessage?.createdAt}
+              {moment(data?.lastMessage?.createdAt).fromNow()}
             </Text>
           </View>
-          <View className="flex-row w-full justify-between items-center mt-[10px]">
+          <View className="flex-row w-full justify-between items-center mt-[8px]">
             <Text
               numberOfLines={1}
               ellipsizeMode="tail"

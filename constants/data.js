@@ -212,3 +212,8 @@ export const NOTIFICATION_TYPES = {
   MATCHES: "Matches",
   MESSAGE: "Message",
 };
+
+export const staticMessages = [
+  "Wishing you a beautiful start! 🌸 It’s wonderful to connect with you.",
+  "Hello! Congratulations on our match. I look forward to knowing you better.",
+];
