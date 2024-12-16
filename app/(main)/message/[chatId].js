@@ -103,16 +103,19 @@ export default function InboxScreen() {
   // console.log(messages);
 
   const handleGenerateMessage = async () => {
-    const options = {
-      data: {
-        context:
-          "Generate a personalized first-time message for a wedding match. make shortly",
-      },
-    };
-    const result = await generateAiMessage(options);
-    if (result?.data?.success) {
-      if (result?.data?.data) {
-        handleSendMessage(result?.data?.data);
+    if (chat?._id) {
+      const options = {
+        data: {
+          context:
+            "Generate a personalized first-time message for a wedding match. make shortly",
+          chatId: chat?._id,
+        },
+      };
+      const result = await generateAiMessage(options);
+      if (result?.data?.success) {
+        if (result?.data?.data) {
+          handleSendMessage(result?.data?.data);
+        }
       }
     }
   };
