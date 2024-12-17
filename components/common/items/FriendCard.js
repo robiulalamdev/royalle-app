@@ -27,7 +27,7 @@ export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
             </Text>
             <Image
               source={require("../../../assets/icons/home/info.png")}
-              className="w-[24px] h-[24px]"
+              className="w-[24px] h-[24px] rounded-full"
               width={24}
               height={24}
             />
@@ -58,9 +58,8 @@ export default function FriendCard({ item = {}, className = "mt-[20px]" }) {
               <View className="flex-row !items-center justify-center gap-x-[4px] py-[4px] px-[8px] rounded-[80px] border-[1px] border-[#FFFFFF05] bg-[#FFFFFF0A]">
                 <Image
                   source={require("../../../assets/icons/home/location.png")}
-                  className="min-w-[16px] h-[16px]"
-                  width={16}
-                  height={16}
+                  className="w-[16px] h-[16px] bg-transparent"
+                  resizeMode="contain"
                 />
                 <Text
                   className="text-white font-normal leading-[20px] text-[12px]"
