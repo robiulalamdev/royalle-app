@@ -9,6 +9,7 @@ import { useFonts } from "expo-font";
 import "../styles/global.css";
 import "react-native-reanimated";
 import { ToastProvider } from "react-native-toast-notifications";
+import { SocketProvider } from "../context/SocketContext";
 
 const RootLayout = () => {
   const [loaded] = useFonts({
@@ -47,7 +48,9 @@ const RootLayout = () => {
             }
             persistor={persistor}
           >
-            <Route />
+            <SocketProvider>
+              <Route />
+            </SocketProvider>
           </PersistGate>
         </ToastProvider>
       </PaperProvider>

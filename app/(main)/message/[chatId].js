@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setChat } from "../../../redux/features/conversations/conversationSlice";
 import { useGenerateAiMessageMutation } from "../../../redux/features/helper/helperApi";
 import { Button } from "react-native-paper";
+import { useSocket } from "../../../context/SocketContext";
 
 export default function InboxScreen() {
   const { user } = useSelector((state) => state.user);
@@ -33,6 +34,9 @@ export default function InboxScreen() {
   const { data = [] } = useGetMessageByChatIdQuery(chatId, {
     refetchOnMountOrArgChange: true,
   });
+
+  const { SOCKET } = useSocket();
+
   const [sendMessage] = useSendMessageMutation();
   const [unseenToSeen] = useUnseenToSeenMutation();
   const [generateAiMessage] = useGenerateAiMessageMutation();
@@ -76,22 +80,42 @@ export default function InboxScreen() {
 
       const result = await sendMessage(options);
       if (result?.data?.success) {
+        const sendMessage = {
+          senderId: user?._id,
+          receiverId: chat?.receiverInfo?._id,
+          chatId: chat?._id,
+          message: messageData,
+          createdAt: Date.now(),
+          members: [chat?.receiverInfo?._id, user?._id],
+        };
+        SOCKET.current.emit("sendMessage", sendMessage);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleGetMessage = (receiveMessage) => {
+      if (receiveMessage?.chatId === chat?._id) {
         setMessages((prevMessages) => {
           const newMessages = [
             ...prevMessages,
             {
-              chatId: chatId,
-              message: messageData,
-              senderId: user?._id,
-              members: chat?.members,
-              isSeen: false,
+              ...receiveMessage,
             },
           ];
           return newMessages;
         });
       }
-    }
-  };
+    };
+
+    // Attach the event listener
+    SOCKET.current.on("getMessage", handleGetMessage);
+
+    // Cleanup function to avoid duplicate listeners
+    return () => {
+      SOCKET.current.off("getMessage", handleGetMessage);
+    };
+  }, [chat, user]); // Add dependencies for chat and user
 
   useEffect(() => {
     // Scroll to the bottom when messages state changes

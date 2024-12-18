@@ -1,6 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TOKEN_NAME = "royalle_token";
+export const BASE_URL = "http://192.168.0.109:8000";
+// baseUrl: "http://192.168.226.26:8000/api/v1",
+// baseUrl: "https://royalle-server.onrender.com/api/v1",
 
 /**
  * Save data to AsyncStorage

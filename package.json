@@ -36,6 +36,7 @@
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
     "expo-system-ui": "~2.9.3",
+    "expo-updates": "~0.24.13",
     "expo-web-browser": "~12.8.2",
     "firebase": "^10.13.0",
     "i": "^0.3.7",
@@ -58,7 +59,7 @@
     "react-native-web": "~0.19.6",
     "react-redux": "^9.1.2",
     "redux-persist": "^6.0.0",
-    "expo-updates": "~0.24.13"
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
