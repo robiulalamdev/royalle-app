@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 import { useSelector } from "react-redux";
 import ProfileImage from "../common/auth/ProfileImage";
 
-export default function Header({ isVisible, setIsVisible }) {
+export default function Header({}) {
   const { user } = useSelector((state) => state.user);
   const router = useRouter();
 
@@ -13,7 +13,7 @@ export default function Header({ isVisible, setIsVisible }) {
     <SafeAreaView>
       <View className="">
         <View className="flex-row justify-between items-center w-full mt-[16px]">
-          <Pressable onPress={() => setIsVisible(!isVisible)}>
+          <Pressable onPress={() => router.push("/search")}>
             <Image
               className="w-[40px] h-[40px]"
               source={require("../../assets/icons/global/menu.png")}

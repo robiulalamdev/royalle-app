@@ -53,7 +53,7 @@ const WelcomePage = () => {
           }
         >
           <View className="px-[20px]">
-            <Header isVisible={isVisible} setIsVisible={setIsVisible} />
+            <Header />
 
             <HomeCarousel
               items={bestMatches}
@@ -68,8 +68,8 @@ const WelcomePage = () => {
         </ScrollView>
         <BottomTab currentTab="Home" />
       </View>
-
-      <FilterSidebar isVisible={isVisible} setIsVisible={setIsVisible} />
+      {/* 
+      <FilterSidebar isVisible={isVisible} setIsVisible={setIsVisible} /> */}
     </>
   );
 };

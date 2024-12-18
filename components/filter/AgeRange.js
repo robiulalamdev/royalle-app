@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
-const CustomMarker = ({ currentValue }) => (
-  <View className="mt-[25px]">
-    <View className="bg-[#52C3BE] w-[20px] h-[20px] rounded-full ml-[12px]" />
-    <Text className="text-white font-normal text-[12px] leading-[20px] text-center ml-[12px]">
-      {currentValue}
-    </Text>
-  </View>
-);
+const CustomMarker = ({ currentValue }) => {
+  console.log(currentValue);
+  return (
+    <View className="mt-[25px]">
+      <View className="bg-[#52C3BE] w-[20px] h-[20px] rounded-full ml-[12px]" />
+      <Text className="text-white font-normal text-[12px] leading-[20px] text-center ml-[12px]">
+        {currentValue}
+      </Text>
+    </View>
+  );
+};
 
 export default function AgeRange({ ageRange, setAgeRange }) {
   const handleValuesChange = (values) => {

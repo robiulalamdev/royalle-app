@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import ProfileImage from "../auth/ProfileImage";
 import { USER_GENDERS } from "../../../constants/data";
 
-const FilterSidebar = ({ isVisible, setIsVisible }) => {
+const FilterSidebar = ({ isVisible, setIsVisible, setQuery }) => {
   const { user } = useSelector((state) => state.user);
   const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");
@@ -30,7 +30,7 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
 
   const [gender, setGender] = useState("");
   const [ageRange, setAgeRange] = useState([31, 35]);
-  const [heightRange, setHeightRange] = useState([48]);
+  const [heightRange, setHeightRange] = useState([48, 68]);
   const [eyeColor, setEyeColor] = useState("");
   const [hairColor, setHairColor] = useState("");
   const [likes, setLikes] = useState("");
@@ -43,7 +43,8 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
     if (gender) queryParams.gender = gender;
     if (ageRange[0] && ageRange[1])
       queryParams.ages = `${ageRange[0]}-${ageRange[1]}`;
-    if (heightRange[0]) queryParams.height = heightRange[0];
+    if (heightRange[0])
+      queryParams.heights = `${heightRange[0]}-${heightRange[1]}`;
     if (eyeColor) queryParams.eyeColor = eyeColor;
     if (hairColor) queryParams.hairColor = hairColor;
     if (likes) queryParams.likes = likes;
@@ -59,9 +60,7 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
       .join("&");
 
     setIsVisible(false);
-    if (queryParams) {
-      router.push(`/search/${queryString}`);
-    }
+    setQuery(queryString);
   };
 
   useEffect(() => {
@@ -76,7 +75,8 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
 
   return (
     <Modal
-      className="flex-1 w-full h-full"
+      className="flex-1 w-full h-full absolute -top-[12px] bg-black"
+      style={{ height: SCREEN_HEIGHT }}
       animationIn="slideInLeft"
       animationOut="slideOutLeft"
       deviceWidth={SCREEN_WIDTH}
@@ -84,10 +84,10 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
       isVisible={isVisible}
       onBackButtonPress={() => setIsVisible && setIsVisible(false)}
       onBackdropPress={() => setIsVisible && setIsVisible(false)}
-      backdropColor="transparent"
-      hasBackdrop={true}
+      backdropColor="#000000"
+      hasBackdrop={false}
     >
-      <SafeAreaView className="bg-black h-full flex-1 relative -left-[25px] px-[20px] pb-[20px]">
+      <SafeAreaView className="bg-black h-full flex-1 relative -left-[25px] px-[16px] pb-[20px]">
         <View className="flex-row items-center justify-between w-full">
           <View className="flex-row items-center gap-x-[12px]">
             <Pressable onPress={() => setIsVisible(false)}>

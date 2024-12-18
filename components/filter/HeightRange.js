@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import { SCREEN_WIDTH } from "../../helpers/common";
 
 const HeightMarker = ({ currentValue }) => {
   const feet = Math.floor(currentValue / 12);
@@ -30,12 +31,10 @@ export default function HeightRange({ heightRange, setHeightRange }) {
       </Text>
       <View>
         <MultiSlider
-          enabledOne={true}
-          enabledTwo={false}
           values={heightRange}
           onValuesChange={handleValuesChange}
-          min={36} // 3 feet in inches
-          max={72} // 6 feet in inches
+          min={36}
+          max={72}
           step={1}
           selectedStyle={{ backgroundColor: "#52C3BE" }}
           unselectedStyle={{
@@ -45,11 +44,8 @@ export default function HeightRange({ heightRange, setHeightRange }) {
             width: "100%",
           }}
           trackStyle={{ height: 8 }}
-          isMarkersSeparated={true}
-          customMarkerLeft={(e) => (
-            <HeightMarker currentValue={e.currentValue} />
-          )}
-          sliderLength={335}
+          customMarker={(e) => <HeightMarker currentValue={e.currentValue} />}
+          sliderLength={SCREEN_WIDTH - 75}
         />
       </View>
     </View>
