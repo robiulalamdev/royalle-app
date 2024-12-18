@@ -86,9 +86,9 @@ const ProfileScreen = () => {
               onPress={() => router.push("profile/notifications")}
               className="relative"
             >
-              <Badge className="absolute -top-[11px] -right-[11px] z-50">
+              {/* <Badge className="absolute -top-[11px] -right-[11px] z-50">
                 3
-              </Badge>
+              </Badge> */}
               <Image
                 source={Assets.Icons.bell}
                 resizeMode="contain"
@@ -145,9 +145,9 @@ const ProfileScreen = () => {
                 <Text className="text-white text-[16px] font-medium">
                   {item.name}
                 </Text>
-                {item?.name === "Notifications" && (
+                {/* {item?.name === "Notifications" && (
                   <Badge className="">3</Badge>
-                )}
+                )} */}
               </TouchableOpacity>
             ))}
             <TouchableOpacity

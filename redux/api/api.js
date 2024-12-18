@@ -7,8 +7,9 @@ export const api = createApi({
   refetchOnFocus: true,
   refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://192.168.0.109:8000/api/v1",
-    baseUrl: "http://192.168.226.26:8000/api/v1",
+    baseUrl: "http://192.168.0.109:8000/api/v1",
+    // baseUrl: "http://192.168.226.26:8000/api/v1",
+    // baseUrl: "https://royalle-server.onrender.com/api/v1",
     prepareHeaders: async (headers) => {
       const token = `Bearer ${await USER_CONFIG.GET_FROM_STORAGE(
         USER_CONFIG.TOKEN_NAME

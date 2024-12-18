@@ -1,10 +1,4 @@
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Pressable, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -18,7 +12,7 @@ export default function Header({ isVisible, setIsVisible }) {
   return (
     <SafeAreaView>
       <View className="">
-        <View className="flex-row justify-between items-center min-h-[72px] w-full mt-[16px]">
+        <View className="flex-row justify-between items-center w-full mt-[16px]">
           <Pressable onPress={() => setIsVisible(!isVisible)}>
             <Image
               className="w-[40px] h-[40px]"
@@ -44,5 +38,3 @@ export default function Header({ isVisible, setIsVisible }) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});

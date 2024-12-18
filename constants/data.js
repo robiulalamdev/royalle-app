@@ -213,6 +213,12 @@ export const NOTIFICATION_TYPES = {
   MESSAGE: "Message",
 };
 
+export const USER_GENDERS = {
+  MALE: "Male",
+  FEMALE: "Female",
+  OTHERS: "Others",
+};
+
 export const staticMessages = [
   "Wishing you a beautiful start! 🌸 It’s wonderful to connect with you.",
   "Hello! Congratulations on our match. I look forward to knowing you better.",

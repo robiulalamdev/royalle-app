@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -19,20 +19,60 @@ import LocationInput from "../../../components/filter/LocationInput";
 import Microfilters from "../../../components/filter/Microfilters";
 import { useSelector } from "react-redux";
 import ProfileImage from "../auth/ProfileImage";
+import { USER_GENDERS } from "../../../constants/data";
 
 const FilterSidebar = ({ isVisible, setIsVisible }) => {
   const { user } = useSelector((state) => state.user);
-  const [gender, setGender] = useState("Male");
   const [locationType, setLocationType] = useState("Mile");
   const [locationValue, setLocationValue] = useState("");
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const [eyeColor, setEyeColor] = useState("#A37042");
-  const [hairColor, setHairColor] = useState("#222222");
-  const [likes, setLikes] = useState("Workout");
-  const [looking, setLooking] = useState("Long term");
-  const [preferences, setPreferences] = useState(["Drinking"]);
+  const [gender, setGender] = useState("");
+  const [ageRange, setAgeRange] = useState([31, 35]);
+  const [heightRange, setHeightRange] = useState([48]);
+  const [eyeColor, setEyeColor] = useState("");
+  const [hairColor, setHairColor] = useState("");
+  const [likes, setLikes] = useState("");
+  const [looking, setLooking] = useState("");
+  const [preferences, setPreferences] = useState([]);
+
+  const handleFilter = () => {
+    const queryParams = {};
+
+    if (gender) queryParams.gender = gender;
+    if (ageRange[0] && ageRange[1])
+      queryParams.ages = `${ageRange[0]}-${ageRange[1]}`;
+    if (heightRange[0]) queryParams.height = heightRange[0];
+    if (eyeColor) queryParams.eyeColor = eyeColor;
+    if (hairColor) queryParams.hairColor = hairColor;
+    if (likes) queryParams.likes = likes;
+    if (looking) queryParams.looking = looking;
+    if (preferences.length > 0) queryParams.preferences = preferences.join(",");
+
+    // Convert the queryParams object into a query string
+    const queryString = Object.entries(queryParams)
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+      )
+      .join("&");
+
+    setIsVisible(false);
+    if (queryParams) {
+      router.push(`/search/${queryString}`);
+    }
+  };
+
+  useEffect(() => {
+    if (user?.gender) {
+      if (user.gender === USER_GENDERS.MALE) {
+        setGender(USER_GENDERS.FEMALE);
+      } else {
+        setGender(USER_GENDERS.MALE);
+      }
+    }
+  }, [user]);
 
   return (
     <Modal
@@ -72,15 +112,18 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
           showsVerticalScrollIndicator={true}
           className="w-full px-[12px] mt-[32px]"
         >
-          <AgeRange />
-          <HeightRange />
+          <AgeRange ageRange={ageRange} setAgeRange={setAgeRange} />
+          <HeightRange
+            heightRange={heightRange}
+            setHeightRange={setHeightRange}
+          />
           <GenderInput gender={gender} setGender={setGender} />
-          <LocationInput
+          {/* <LocationInput
             locationType={locationType}
             setLocationType={setLocationType}
             locationValue={locationValue}
             setLocationValue={setLocationValue}
-          />
+          /> */}
           <Microfilters
             open={open}
             setOpen={setOpen}
@@ -96,7 +139,10 @@ const FilterSidebar = ({ isVisible, setIsVisible }) => {
             setPreferences={setPreferences}
           />
 
-          <Pressable className="px-[20px] py-[16px] bg-primary rounded-[28px] mt-[36px] mb-[26px]">
+          <Pressable
+            onPress={() => handleFilter()}
+            className="px-[20px] py-[16px] bg-primary rounded-[28px] mt-[36px] mb-[26px]"
+          >
             <Text className="text-center font-medium text-[#010404] leading-[24px] text-[16px]">
               Apply filter
             </Text>

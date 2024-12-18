@@ -53,7 +53,7 @@ const SignupScreen = () => {
   const [looking, setLooking] = useState("");
   const [preferences, setPreferences] = useState([]);
   const [ageRange, setAgeRange] = useState([33]);
-  const [height, setHeight] = useState([4]);
+  const [height, setHeight] = useState([48]);
 
   const [image, setImage] = useState(null);
 

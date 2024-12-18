@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ndemo",
+    "name": "Royalle",
     "slug": "ndemo",
     "version": "1.0.0",
     "plugins": [
@@ -41,9 +41,9 @@
     "userInterfaceStyle": "automatic",
     "main": "expo-router/entry",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/brand/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#010404"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -51,15 +51,32 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nahid.demo",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/brand/splash.png",
+        "backgroundColor": "#010404"
       },
       "googleServicesFile": "./google-services.json",
-      "package": "com.nahid.demo"
+      "package": "com.nahid.demo",
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "bundler": "metro",
@@ -77,6 +94,9 @@
         "projectId": "c3a97332-02f0-48ad-b402-ac2b9d5170bc"
       }
     },
-    "owner": "robiulalamdx"
+    "owner": "robiulalamdx",
+    "updates": {
+      "url": "https://u.expo.dev/c3a97332-02f0-48ad-b402-ac2b9d5170bc"
+    }
   }
 }

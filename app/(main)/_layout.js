@@ -40,7 +40,7 @@ export default function AppLayout() {
           }}
         />
         <Stack.Screen
-          name="filter/index"
+          name="search/[query]"
           options={{
             headerShown: false,
           }}

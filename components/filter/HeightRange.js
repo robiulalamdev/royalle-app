@@ -15,9 +15,7 @@ const HeightMarker = ({ currentValue }) => {
   );
 };
 
-export default function HeightRange() {
-  const [heightRange, setHeightRange] = useState([48]); // Initial value is 4 feet (48 inches)
-
+export default function HeightRange({ heightRange, setHeightRange }) {
   const handleValuesChange = (values) => {
     setHeightRange(values);
   };

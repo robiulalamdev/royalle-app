@@ -11,9 +11,7 @@ const CustomMarker = ({ currentValue }) => (
   </View>
 );
 
-export default function AgeRange() {
-  const [ageRange, setAgeRange] = useState([31, 35]);
-
+export default function AgeRange({ ageRange, setAgeRange }) {
   const handleValuesChange = (values) => {
     setAgeRange(values);
   };

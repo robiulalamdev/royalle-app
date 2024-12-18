@@ -39,6 +39,15 @@ const usersApi = api.injectEndpoints({
       providesTags: ["users"],
     }),
 
+    searchMatches: builder.mutation({
+      query: ({ data }) => ({
+        url: `/users/search`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [],
+    }),
+
     postLogin: builder.mutation({
       query: ({ data }) => ({
         url: `/users/login`,
@@ -95,4 +104,7 @@ export const {
   useCheckEmailExistMutation,
   useUpdateUserInfoMutation,
   useUpdateUserMutation,
+
+  // search
+  useSearchMatchesMutation,
 } = usersApi;
